@@ -5,4 +5,4 @@ La cartella PE è quella in cui saranno via via inserite le pagine funzionanti d
 Il file Globals.php contiene var globali (come dati x accedere al server dbms corretto) e procedure di utilità varia
 Il file db.php contine la classe che permette di accedere al DB e realizzare le query (di qualsiasi tipo) ottenendo in uscita risultati da usare nella pegina web
 
-Possibile realizzare funzioni nel codice che <ll loro interno creino l'oggetto di classe DB, impostino la query, usino i metodi e tornino all'ambiente chiamante i dati cosi come sono restituiti dall'oggetto.
+Possibile realizzare funzioni nel codice che al loro interno creino l'oggetto di classe DB, impostino la query, usino i metodi e tornino all'ambiente chiamante i dati cosi come sono restituiti dall'oggetto.
