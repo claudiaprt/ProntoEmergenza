@@ -1,12 +1,5 @@
 /*MOBILE*/
 
-.mobile {
-	display:block;
-}
-.desktop {
-	display:none;
-}
-
 .profilo {
     background-color: #ffffff;
     display: flex;
@@ -312,8 +305,8 @@
 }
 
 .show-burger {
-	width: 100% !important;
-	height: 150vh !important;
+	width: 150% !important;
+	height: 150% !important;
 	padding-left: 50% !important;
 }
 
@@ -324,11 +317,11 @@
   width: 0vh;
   height: 0%;
   border-bottom-left-radius: 100%;
-  background-color: #060606d9;
+  background-color: #060606ca;
   margin: 0;
   padding: 10vh 0 0 0;
   text-align: center;
-  line-height: 8vh;
+  line-height: 10vh;
   transition: 0.5s;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;

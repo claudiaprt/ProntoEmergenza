@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/styleguide.css" />
     <link rel="stylesheet" media="screen and (min-width:701px)" href="css/styleD_profilo_amm.css" />
@@ -9,8 +9,135 @@
     <script type="text/javascript" src="js/script_profilo_amm.js"></script>
   </head>
   <body>
+	
+	<div class="header">
+		<img class="immagine-logo" src="img/immagine-logo-ambulanza.png" />
+		<a class="pulsanti">Contatti</a>
+		<a class="pulsanti">Bacheca</a>
+		<a class="pulsanti">Calendario</a>
+		<a class="pulsanti">Profilo</a>
+		<a class="pulsanti">Log out &gt</a>
+	</div>
+  
+	<div class="slider">
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div><div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div><div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div><div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div><div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div><div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div><div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+		<div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div><div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div><div class="profile">
+			<img class="image" src="img/ellipse-17.png">
+			<p class="nome">Valentino Rossi</p>
+		</div>
+	</div>
+  
+  <!--
+  
     <div class="desktop">
-      <div class="profilo">
+      <div class="profilo"
         <div class="div">
           <img class="immagine-logo" src="img/immagine-logo-ambulanza.png" />
           <div class="pulsante-contatti"><div class="text-wrapper">Contatti</div></div>
@@ -103,5 +230,8 @@
         </div>
       </div>
     </div>
+	
+	-->
+	
   </body>
 </html>

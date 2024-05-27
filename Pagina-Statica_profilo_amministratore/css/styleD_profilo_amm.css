@@ -1,13 +1,80 @@
 /*DESKTOP*/
 
-.desktop{
-  display: block;
-}
-.mobile{
-  display: none;
+.pulsanti{
+	/*left: 1132px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 10px;
+	position: relative;
+	top: 51px;*/
+	
+	position:relative;
+	display:inline-block;
+	font-size:20px;
+	text-align:right;
+	left:41%;
+	margin:1%;
+	bottom:50%;
+	font-family: "Montserrat", Helvetica;
 }
 
-.profilo {
+.header{
+	position:relative;
+	width:1370.64px;
+	height:100px;
+	left:10%;
+	top:5px;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.header img{
+	width:200px		!important;
+	height:100px	!important;
+}
+
+.slider{
+	width:1028px;
+	height:500px;
+	top:20px;
+	margin-left:20%;
+	position:relative;
+	padding:15px;
+	display: flex;
+	align-content: space-around;
+	align-items: flex-end;
+	flex-wrap: wrap;
+}
+
+.profile{
+	width:14.6% !important;
+	height:160px;
+	justify-content:center;
+	margin:1% !important;
+	left:1%;
+	display:inline-block !important;
+}
+
+.nome {
+	position:relative;
+	text-align:center;
+	font-size:16px;
+	margin:5px;
+	font-family: "Montserrat", Helvetica;
+}
+
+.image {
+	position:relative;
+	left:5%;
+	top:3%;
+	width:120px;
+	height:120px;
+	border-radius:50%;
+}
+
+/*.profilo {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -15,7 +82,7 @@
   width: 100%;
 }
 
-.profilo .div {
+.div {
   background-color: #ffffff;
   overflow: hidden;
   width: 1440px;
@@ -23,7 +90,7 @@
   position: relative;
 }
 
-.profilo .immagine-logo {
+.immagine-logo {
   position: absolute;
   width: 165px;
   height: 77px;
@@ -32,7 +99,7 @@
   object-fit: cover;
 }
 
-.profilo .pulsante-contatti {
+.pulsante-contatti {
   left: 1132px;
   display: inline-flex;
   align-items: center;
@@ -43,7 +110,7 @@
   top: 51px;
 }
 
-.profilo .text-wrapper {
+.text-wrapper {
   position: relative;
   width: fit-content;
   margin-top: -1px;
@@ -57,7 +124,7 @@
   white-space: nowrap;
 }
 
-.profilo .pulsante-bacheca {
+.pulsante-bacheca {
   left: 959px;
   display: inline-flex;
   align-items: center;
@@ -68,7 +135,7 @@
   top: 51px;
 }
 
-.profilo .pulsante-calendario {
+.pulsante-calendario {
   left: 764px;
   display: inline-flex;
   align-items: center;
@@ -79,7 +146,7 @@
   top: 51px;
 }
 
-.profilo .pulsante-profilo {
+.pulsante-profilo {
   left: 613px;
   display: inline-flex;
   align-items: center;
@@ -90,7 +157,7 @@
   top: 51px;
 }
 
-.profilo .pulsante-log-out {
+.pulsante-log-out {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +168,7 @@
   left: 1288px;
 }
 
-.profilo .ellipse {
+.ellipse {
   height: 92px;
   top: 199px;
   left: 330px;
@@ -110,7 +177,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-2 {
+.text-wrapper-2 {
   position: absolute;
   width: 141px;
   top: 302px;
@@ -124,7 +191,7 @@
   line-height: normal;
 }
 
-.profilo .img {
+.img {
   height: 92px;
   top: 199px;
   left: 564px;
@@ -133,7 +200,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-3 {
+.text-wrapper-3 {
   position: absolute;
   width: 149px;
   top: 302px;
@@ -147,7 +214,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-2 {
+.ellipse-2 {
   height: 92px;
   top: 397px;
   left: 330px;
@@ -156,7 +223,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-4 {
+.text-wrapper-4 {
   width: 170px;
   top: 500px;
   left: 290px;
@@ -170,7 +237,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-3 {
+.ellipse-3 {
   height: 92px;
   top: 397px;
   left: 564px;
@@ -179,7 +246,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-5 {
+.text-wrapper-5 {
   width: 169px;
   top: 500px;
   left: 524px;
@@ -193,7 +260,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-4 {
+.ellipse-4 {
   height: 92px;
   top: 585px;
   left: 330px;
@@ -202,7 +269,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-6 {
+.text-wrapper-6 {
   position: absolute;
   width: 148px;
   top: 689px;
@@ -216,7 +283,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-5 {
+.ellipse-5 {
   height: 92px;
   top: 585px;
   left: 564px;
@@ -225,7 +292,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-7 {
+.text-wrapper-7 {
   width: 171px;
   top: 689px;
   left: 524px;
@@ -239,7 +306,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-6 {
+.ellipse-6 {
   height: 92px;
   top: 783px;
   left: 330px;
@@ -248,7 +315,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-8 {
+.text-wrapper-8 {
   width: 190px;
   top: 887px;
   left: 279px;
@@ -262,7 +329,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-7 {
+.ellipse-7 {
   height: 92px;
   top: 783px;
   left: 564px;
@@ -271,7 +338,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-9 {
+.text-wrapper-9 {
   width: 207px;
   top: 887px;
   left: 506px;
@@ -285,7 +352,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-8 {
+.ellipse-8 {
   height: 43px;
   top: 981px;
   left: 330px;
@@ -294,7 +361,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-10 {
+.text-wrapper-10 {
   position: absolute;
   width: 158px;
   top: 1084px;
@@ -308,7 +375,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-9 {
+.ellipse-9 {
   height: 43px;
   top: 981px;
   left: 564px;
@@ -317,7 +384,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-11 {
+.text-wrapper-11 {
   position: absolute;
   width: 156px;
   top: 1084px;
@@ -331,7 +398,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-10 {
+.ellipse-10 {
   height: 92px;
   top: 184px;
   left: 801px;
@@ -340,7 +407,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-12 {
+.text-wrapper-12 {
   width: 141px;
   top: 287px;
   left: 775px;
@@ -354,7 +421,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-11 {
+.ellipse-11 {
   height: 92px;
   top: 184px;
   left: 1035px;
@@ -363,7 +430,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-13 {
+.text-wrapper-13 {
   position: absolute;
   width: 149px;
   top: 287px;
@@ -377,7 +444,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-12 {
+.ellipse-12 {
   height: 92px;
   top: 382px;
   left: 801px;
@@ -386,7 +453,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-14 {
+.text-wrapper-14 {
   width: 170px;
   top: 485px;
   left: 761px;
@@ -400,7 +467,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-13 {
+.ellipse-13 {
   height: 92px;
   top: 382px;
   left: 1035px;
@@ -409,7 +476,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-15 {
+.text-wrapper-15 {
   width: 169px;
   top: 485px;
   left: 995px;
@@ -423,7 +490,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-14 {
+.ellipse-14 {
   height: 92px;
   top: 570px;
   left: 801px;
@@ -432,7 +499,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-16 {
+.text-wrapper-16 {
   position: absolute;
   width: 148px;
   top: 674px;
@@ -446,7 +513,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-15 {
+.ellipse-15 {
   height: 92px;
   top: 570px;
   left: 1035px;
@@ -455,7 +522,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-17 {
+.text-wrapper-17 {
   width: 171px;
   top: 674px;
   left: 995px;
@@ -469,7 +536,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-16 {
+.ellipse-16 {
   height: 92px;
   top: 768px;
   left: 801px;
@@ -478,7 +545,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-18 {
+.text-wrapper-18 {
   width: 190px;
   top: 872px;
   left: 750px;
@@ -492,7 +559,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-17 {
+.ellipse-17 {
   height: 92px;
   top: 768px;
   left: 1035px;
@@ -501,7 +568,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-19 {
+.text-wrapper-19 {
   width: 207px;
   top: 872px;
   left: 977px;
@@ -515,7 +582,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-18 {
+.ellipse-18 {
   height: 58px;
   top: 966px;
   left: 801px;
@@ -524,7 +591,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-20 {
+.text-wrapper-20 {
   position: absolute;
   width: 158px;
   top: 1069px;
@@ -538,7 +605,7 @@
   line-height: normal;
 }
 
-.profilo .ellipse-19 {
+.ellipse-19 {
   height: 58px;
   top: 966px;
   left: 1035px;
@@ -547,7 +614,7 @@
   object-fit: cover;
 }
 
-.profilo .text-wrapper-21 {
+.text-wrapper-21 {
   position: absolute;
   width: 156px;
   top: 1069px;
@@ -560,3 +627,4 @@
   letter-spacing: 0;
   line-height: normal;
 }
+*/
