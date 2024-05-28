@@ -1,0 +1,191 @@
+* {
+    user-select: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    width: 100%;
+    height: 100%;
+
+    #calendar {
+        margin: auto 1%;
+        display: grid;
+        grid-template-rows: 65% 35%;
+        height: 100%;
+    }
+
+    #main-content {
+        margin: auto 1%;
+    }
+}
+
+#calendar-wrapper {
+    border-radius: 5px;
+    width: 98%;
+    height: 98%;
+    margin: 1%;
+    background-color: rgba(255, 255, 0, 0.5);
+
+    #calendar-header {
+        display: flex;
+        flex-direction: row;
+        padding: 0 1%;
+    }
+
+    #calendar-controls {
+        display: grid;
+        grid-template-columns: 10% 80% 10%;
+
+        >div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    #calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        width: 100%;
+        margin: auto 0;
+
+        .day {
+            position: relative;
+            text-align: center;
+            border-radius: 5px;
+
+            &.disabled {
+                opacity: 0.5;
+            }
+
+            &.enabled {
+                background-color: rgba(#666, 0.5);
+            }
+
+            &.empty {
+                display: none;
+            }
+        }
+
+        .red-dot {
+            position: absolute;
+            top: 2.5px;
+            right: 2.5px;
+            width: 2.5px;
+            height: 2.5px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .orange-dot {
+            position: absolute;
+            top: 2.5px;
+            right: 2.5px;
+            width: 2.5px;
+            height: 2.5px;
+            background-color: orange;
+            border-radius: 50%;
+        }
+
+        .green-dot {
+            position: absolute;
+            top: 2.5px;
+            right: 2.5px;
+            width: 2.5px;
+            height: 2.5px;
+            background-color: green;
+            border-radius: 50%;
+        }
+    }
+}
+
+#current-month-header {
+    display: grid;
+    grid-template-columns: 90% 5% 5%;
+    border: 1px solid red;
+    border-radius: 5px 5px 0 0;
+
+    #current-month-display {
+        padding: 0 1%;
+
+        p {
+            text-transform: uppercase;
+        }
+    }
+
+    #calendar-options,
+    #settings-options {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+#schedule {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    height: 100%;
+    border: 1px solid red;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+
+    #schedule-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: gray;
+
+        #schedule-date {
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    #schedule-details {
+        border-radius: 0 0 5px 5px;
+        background-color: green;
+        display: grid;
+        grid-template-rows: 10% 30% 30% 30%;
+        grid-template-columns: 10% 30% 30% 30%;
+
+        .time-slot {
+            border: 1px solid black;
+        }
+
+        .role,
+        .shift,
+        .shift-detail {
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .last-shift {
+            border-radius: 0 0 0 5px;
+        }
+
+        .shift-detail {
+            flex-direction: column;
+
+            &:last-child {
+                border-radius: 0 0 5px 0;
+            }
+        }
+    }
+}
