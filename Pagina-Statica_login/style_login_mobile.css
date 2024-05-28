@@ -143,3 +143,21 @@
 input[type=text], input[type=password]:focus {
 	outline:none;
 }
+#h2Log {
+    color: #e00;
+    font-size: 16px;
+    position: absolute;
+    z-index: 1000;
+    background-color: #ef7f1b;
+    padding: 10px;
+    max-width: 600px;
+    width: auto;
+    margin: 0 auto;
+    left: 50%;
+    top: 61%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: "Montserrat", Helvetica;
+    font-weight: bold;
+    white-space: nowrap;
+}
