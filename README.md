@@ -7,8 +7,9 @@ Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". D
 - **Pagine_Statiche_xxxxxxx**: Le cartelle che contengono le pagine web statiche. Il suffisso `xxxxxx` indica la funzione specifica svolta dal gruppo di lavoro responsabile della cartella.
   
 - **PE**: Questa cartella contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto.
-         ### Sottocartelle previste:
-             - **lib**: cartella contenente i file php d libreria, pssia globals.php e db.php
+
+  ### Sottocartelle previste:
+             **lib**: cartella contenente i file php d libreria, pssia globals.php e db.php
 
 ## File Principali
 
