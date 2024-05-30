@@ -1,0 +1,54 @@
+/* Stili specifici per dispositivi mobili */
+@media only screen and (max-width: 768px) {
+    body {
+        display: block; /* Stack elementi verticalmente */
+        height: auto; /* Altezza automatica */
+        padding: 10px; /* Spazio attorno al contenuto */
+    }
+
+    .container {
+        flex-direction: column; /* Sidebar e main impilati verticalmente */
+        width: 100%; /* Usa tutta la larghezza dello schermo */
+        height: auto; /* Altezza automatica */
+        max-width: none; /* Rimuove la larghezza massima */
+    }
+
+    .sidebar {
+        width: 100%; /* Sidebar occupa tutta la larghezza */
+        padding: 10px; /* Padding ridotto */
+    }
+
+    .main {
+        width: 100%; /* Main occupa tutta la larghezza */
+        padding: 10px; /* Padding ridotto */
+    }
+
+    .calendar {
+        grid-template-columns: repeat(7, 1fr); /* Mantieni 7 colonne per i giorni */
+    }
+
+    .schedule {
+        display: block; /* Usa block invece di table per adattarsi meglio */
+    }
+
+    .header, .row {
+        display: flex; /* Usa flexbox per le righe */
+        flex-direction: column; /* Impila le celle verticalmente */
+    }
+
+    .cell {
+        display: block; /* Ogni cella diventa un blocco a sé */
+        width: auto; /* Larghezza automatica */
+        border: none; /* Rimuove i bordi tra le celle */
+        margin-bottom: 5px; /* Spazio tra le celle */
+    }
+
+    /* Riduzione delle etichette per spazio limitato */
+    .cell.time {
+        font-size: 0.8em; /* Riduci dimensione font */
+    }
+
+    .header .cell {
+        font-size: 0.8em; /* Riduci dimensione font */
+    }
+}
