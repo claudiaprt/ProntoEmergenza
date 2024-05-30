@@ -11,12 +11,13 @@
 
 <body>
     <div class="container">
-        <!--h3>sabato, 08 giugno 2024</h3-->
         <div id="grid-container">
             <div id="calendar">
                 <div id="calendar-wrapper">
                     <div id="calendar-header">
-                        <img src="./assets/images/icons/calendar_event.svg" alt="calendar_event" draggable="false">
+                        <div>
+                            <img src="./assets/images/icons/calendar_event.svg" alt="calendar_event" draggable="false">
+                        </div>
                         <p>Calendario</p>
                     </div>
                     <div id="calendar-controls">
@@ -172,70 +173,56 @@
                             <span class="orange-dot"></span>
                             <p>30</p>
                         </div>
-                        <div class="day disabled">
-                            <span class="red-dot"></span>
-                            <p>1</p>
-                        </div>
-                        <div class="day disabled">
-                            <span class="red-dot"></span>
-                            <p>2</p>
-                        </div>
-                        <div class="day disabled">
-                            <span class="red-dot"></span>
-                            <p>3</p>
-                        </div>
-                        <div class="day disabled">
-                            <span class="orange-dot"></span>
-                            <p>4</p>
-                        </div>
-                        <div class="day disabled">
-                            <span class="red-dot"></span>
-                            <p>5</p>
-                        </div>
-                        <div class="day disabled">
-                            <span class="red-dot"></span>
-                            <p>6</p>
-                        </div>
-                        <div class="day disabled">
-                            <span class="orange-dot"></span>
-                            <p>7</p>
-                        </div>
+                    </div>
+                </div>
+                <div id="notes-form">
+                    <div id="notes-wrapper">
+                        <h3 id="notes-header">Note aggiuntive</h3>
+                        <textarea name="additive_notes" placeholder="Scrivi qui"></textarea>
+                        <input type="submit" name="add_note" value="Aggiungi">
                     </div>
                 </div>
             </div>
             <div id="main-content">
-                <div id="current-month-header">
-                    <div id="current-month-display">
-                        <p>Giugno 2024</p>
-                    </div>
-                    <div id="calendar-options">
-                        <img src="./assets/images/icons/calendar_event.svg" alt="calendar_event" draggable="false">
-                    </div>
-                    <div id="settings-options">
-                        <img src="./assets/images/icons/sliders.svg" alt="sliders" draggable="false">
-                    </div>
-                </div>
                 <div id="schedule">
                     <div id="schedule-header">
                         <p id="schedule-date">giovedì 8 giugno 2024</p>
+                        <div id="calendar-options">
+                            <img src="./assets/images/icons/calendar_event.svg" alt="calendar_event" draggable="false">
+                        </div>
+                        <div id="settings-options">
+                            <img src="./assets/images/icons/sliders.svg" alt="sliders" draggable="false">
+                        </div>
                     </div>
                     <div id="schedule-details">
                         <div class="time-slot"></div>
                         <div class="role">SOCCORRITORE</div>
                         <div class="role">SOCCORRITORE</div>
                         <div class="role">AUTISTA SOCCORRITORE</div>
-                        <div class="shift">Matt.</div>
+                        <div class="shift">MATT.</div>
                         <div class="shift-detail">Benini Grazia<br>07:00-13:00</div>
-                        <div class="shift-detail">Preti Alessandro<br>07:00-13:00</div>
+                        <div class="shift-detail">Preti Alessandro<br>07:00-13:00
+                            <span class="notes">
+                                <img src="./assets/images/icons/stickies.svg" alt="stickies" draggable="false">
+                            </span>
+                        </div>
                         <div class="shift-detail">Castelnuovo Simona<br>07:00-13:00</div>
-                        <div class="shift">Pome.</div>
-                        <div class="shift-detail">Caini Samantha<br>13:00-19:00</div>
+                        <div class="shift">POME.</div>
+                        <div class="shift-detail">Caini Samantha<br>13:00-19:00
+                            <span class="notes">
+                                <img src="./assets/images/icons/stickies.svg" alt="stickies" draggable="false">
+                            </span>
+                        </div>
                         <div class="shift-detail">Castelnuovo Simona<br>13:00-19:00</div>
                         <div class="shift-detail">Preti Alessandro<br>13:00-19:00</div>
-                        <div class="shift last-shift">Nott.</div>
+                        <div class="shift last-shift">NOTT.</div>
                         <div class="shift-detail">Gatta Francesca<br>19:00-07:00</div>
                         <div class="shift-detail">Caini Martina<br>19:00-07:00</div>
-                        <div class="shift-detail">Zambelli Erika<br>19:00-07:00</div>
+                        <div class="shift-detail">Zambelli Erika<br>19:00-07:00
+                            <span class="notes">
+                                <img src="./assets/images/icons/stickies.svg" alt="stickies" draggable="false">
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

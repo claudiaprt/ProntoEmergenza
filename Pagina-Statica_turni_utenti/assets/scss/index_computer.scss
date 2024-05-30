@@ -10,6 +10,7 @@
 
 * {
     user-select: none;
+    cursor: default;
     font-family: "Cairo", sans-serif;
 }
 
@@ -31,26 +32,37 @@ body {
     width: 100%;
     height: 100%;
 
+    >div {
+        margin: 0.25rem;
+    }
+
     #calendar {
-        margin: 1%;
+        display: grid;
+        grid-template-rows: 75% 25%;
         height: 98%;
     }
 
     #main-content {
         height: 85%;
-        margin: 1%;
     }
 }
 
 #calendar-wrapper {
+    display: grid;
+    grid-template-rows: 10% 10% 80%;
     border-radius: 5px;
-    margin: 1%;
-    background-color: rgba(128, 128, 128, 0.5);
+    background: linear-gradient(to bottom right, transparent, #262b5b);
 
     #calendar-header {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 15% 85%;
         padding: 0 1rem;
+
+        >div:first-child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         >* {
             padding: 0 0.25rem;
@@ -83,13 +95,15 @@ body {
     #calendar-grid {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        padding: 1rem;
+        grid-template-rows: repeat(5, 1fr);
+        padding: 0.5rem 1rem;
 
         .day {
             position: relative;
             text-align: center;
             border-radius: 5px;
+            margin: 0.05rem;
+            height: 75%;
 
             &:hover:not(.enabled) {
                 background-color: rgba(128, 128, 128, 0.25);
@@ -97,14 +111,18 @@ body {
 
             &.disabled {
                 opacity: 0.5;
+
+                >span {
+                    display: none;
+                }
             }
 
             &.enabled {
                 background-color: rgba(128, 128, 128, 0.75);
-            }
 
-            &.empty {
-                display: none;
+                &:hover {
+                    background-color: rgba(128, 128, 128, 0.5);
+                }
             }
         }
 
@@ -143,7 +161,7 @@ body {
 #current-month-header {
     display: grid;
     grid-template-columns: 90% 5% 5%;
-    border: 1px solid red;
+    border: 1px solid black;
     border-radius: 5px 5px 0 0;
 
     #current-month-display {
@@ -159,6 +177,10 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &:hover {
+            background-color: rgba(128, 128, 128, 0.25);
+        }
     }
 }
 
@@ -166,37 +188,74 @@ body {
     display: grid;
     grid-template-rows: 10% 90%;
     height: 100%;
-    border: 1px solid red;
     border-top: none;
-    border-radius: 0 0 5px 5px;
 
     #schedule-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: gray;
+        display: grid;
+        padding: 0.5rem;
+        border-width: 1px 1px 0 1px;
+        border-style: solid;
+        border-color: black;
+        grid-template-columns: 90% 5% 5%;
+        border-radius: 5px 5px 0 0;
+        background-color: #262b5b;
+
+        >p {
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        >* {
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            margin: 0 0.25rem;
+
+            &:not(:first-child) {
+                justify-content: center;
+            }
+
+            &:hover:not(:first-child) {
+                background-color: rgba(128, 128, 128, 0.25);
+            }
+        }
 
         #schedule-date {
-            text-align: center;
-            width: 100%;
+            text-transform: uppercase;
         }
     }
 
     #schedule-details {
         border-radius: 0 0 5px 5px;
-        background-color: green;
         display: grid;
         grid-template-rows: 10% 30% 30% 30%;
         grid-template-columns: 10% 30% 30% 30%;
 
-        .time-slot {
+        >div {
             border: 1px solid black;
+            position: relative;
+
+            &:nth-child(n+5) {
+                border-top: none;
+            }
+
+            &:nth-child(n):not(:nth-child(4n)) {
+                border-right: none;
+            }
         }
+
+        & .notes {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+        }
+
+        .time-slot {}
 
         .role,
         .shift,
         .shift-detail {
-            border: 1px solid black;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -215,4 +274,49 @@ body {
             }
         }
     }
+}
+
+textarea {
+    margin: 0.5rem 0;
+    resize: none;
+    text-align: center;
+
+    &:focus {
+        outline: none;
+
+        &::placeholder {
+            color: transparent;
+        }
+    }
+
+    width: 80%;
+}
+
+#notes-header {
+    margin: 0;
+    padding: 0;
+}
+
+textarea,
+input {
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#notes-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#notes-wrapper {
+    background: linear-gradient(to bottom right, transparent, #ef7f1b);
+    width: 100%;
+    height: 95%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
