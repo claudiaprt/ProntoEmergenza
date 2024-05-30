@@ -10,6 +10,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  cursor: default;
   font-family: "Cairo", sans-serif;
 }
 
@@ -31,24 +32,33 @@ body {
   width: 100%;
   height: 100%;
 }
+#grid-container > div {
+  margin: 0.25rem;
+}
 #grid-container #calendar {
-  margin: 1%;
+  display: grid;
+  grid-template-rows: 75% 25%;
   height: 98%;
 }
 #grid-container #main-content {
   height: 85%;
-  margin: 1%;
 }
 
 #calendar-wrapper {
+  display: grid;
+  grid-template-rows: 10% 10% 80%;
   border-radius: 5px;
-  margin: 1%;
-  background-color: rgba(128, 128, 128, 0.5);
+  background: linear-gradient(to bottom right, transparent, #262b5b);
 }
 #calendar-wrapper #calendar-header {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 15% 85%;
   padding: 0 1rem;
+}
+#calendar-wrapper #calendar-header > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #calendar-wrapper #calendar-header > * {
   padding: 0 0.25rem;
@@ -76,13 +86,15 @@ body {
 #calendar-wrapper #calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  padding: 1rem;
+  grid-template-rows: repeat(5, 1fr);
+  padding: 0.5rem 1rem;
 }
 #calendar-wrapper #calendar-grid .day {
   position: relative;
   text-align: center;
   border-radius: 5px;
+  margin: 0.05rem;
+  height: 75%;
 }
 #calendar-wrapper #calendar-grid .day:hover:not(.enabled) {
   background-color: rgba(128, 128, 128, 0.25);
@@ -90,11 +102,14 @@ body {
 #calendar-wrapper #calendar-grid .day.disabled {
   opacity: 0.5;
 }
+#calendar-wrapper #calendar-grid .day.disabled > span {
+  display: none;
+}
 #calendar-wrapper #calendar-grid .day.enabled {
   background-color: rgba(128, 128, 128, 0.75);
 }
-#calendar-wrapper #calendar-grid .day.empty {
-  display: none;
+#calendar-wrapper #calendar-grid .day.enabled:hover {
+  background-color: rgba(128, 128, 128, 0.5);
 }
 #calendar-wrapper #calendar-grid .red-dot {
   position: absolute;
@@ -127,7 +142,7 @@ body {
 #current-month-header {
   display: grid;
   grid-template-columns: 90% 5% 5%;
-  border: 1px solid red;
+  border: 1px solid black;
   border-radius: 5px 5px 0 0;
 }
 #current-month-header #current-month-display {
@@ -142,39 +157,71 @@ body {
   align-items: center;
   justify-content: center;
 }
+#current-month-header #calendar-options:hover,
+#current-month-header #settings-options:hover {
+  background-color: rgba(128, 128, 128, 0.25);
+}
 
 #schedule {
   display: grid;
   grid-template-rows: 10% 90%;
   height: 100%;
-  border: 1px solid red;
   border-top: none;
-  border-radius: 0 0 5px 5px;
 }
 #schedule #schedule-header {
+  display: grid;
+  padding: 0.5rem;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-color: black;
+  grid-template-columns: 90% 5% 5%;
+  border-radius: 5px 5px 0 0;
+  background-color: #262b5b;
+}
+#schedule #schedule-header > p {
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+#schedule #schedule-header > * {
   display: flex;
   align-items: center;
+  border-radius: 5px;
+  margin: 0 0.25rem;
+}
+#schedule #schedule-header > *:not(:first-child) {
   justify-content: center;
-  background-color: gray;
+}
+#schedule #schedule-header > *:hover:not(:first-child) {
+  background-color: rgba(128, 128, 128, 0.25);
 }
 #schedule #schedule-header #schedule-date {
-  text-align: center;
-  width: 100%;
+  text-transform: uppercase;
 }
 #schedule #schedule-details {
   border-radius: 0 0 5px 5px;
-  background-color: green;
   display: grid;
   grid-template-rows: 10% 30% 30% 30%;
   grid-template-columns: 10% 30% 30% 30%;
 }
-#schedule #schedule-details .time-slot {
+#schedule #schedule-details > div {
   border: 1px solid black;
+  position: relative;
+}
+#schedule #schedule-details > div:nth-child(n+5) {
+  border-top: none;
+}
+#schedule #schedule-details > div:nth-child(n):not(:nth-child(4n)) {
+  border-right: none;
+}
+#schedule #schedule-details .notes {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 #schedule #schedule-details .role,
 #schedule #schedule-details .shift,
 #schedule #schedule-details .shift-detail {
-  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,89 +237,47 @@ body {
   border-radius: 0 0 5px 0;
 }
 
-@media screen and (max-width: 768px) {
-  #grid-container {
-    grid-template-columns: 100%;
-  }
-  #grid-container #calendar {
-    display: none;
-  }
-  #grid-container #main-content {
-    height: 100%;
-  }
-  #calendar-wrapper #calendar-header {
-    display: none;
-  }
-  #calendar-wrapper #calendar-controls {
-    grid-template-columns: 10% 80% 10%;
-  }
-  #calendar-wrapper #calendar-controls #prev-month,
-  #calendar-wrapper #calendar-controls #next-month {
-    height: 50%;
-    margin: auto 0;
-    border-radius: 2.5px;
-  }
-  #calendar-wrapper #calendar-controls #prev-month:hover,
-  #calendar-wrapper #calendar-controls #next-month:hover {
-    background-color: rgba(128, 128, 128, 0.25);
-  }
-  #calendar-wrapper #calendar-grid {
-    padding: 1rem;
-  }
-  #calendar-wrapper #calendar-grid .day {
-    position: relative;
-    text-align: center;
-    border-radius: 5px;
-  }
-  #calendar-wrapper #calendar-grid .day:hover:not(.enabled) {
-    background-color: rgba(128, 128, 128, 0.25);
-  }
-  #calendar-wrapper #calendar-grid .day.disabled {
-    opacity: 0.5;
-  }
-  #calendar-wrapper #calendar-grid .day.enabled {
-    background-color: rgba(128, 128, 128, 0.75);
-  }
-  #calendar-wrapper #calendar-grid .day.empty {
-    display: none;
-  }
-  #calendar-wrapper #calendar-grid .red-dot {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 5px;
-    height: 5px;
-    background-color: red;
-    border-radius: 50%;
-  }
-  #calendar-wrapper #calendar-grid .orange-dot {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 5px;
-    height: 5px;
-    background-color: orange;
-    border-radius: 50%;
-  }
-  #calendar-wrapper #calendar-grid .green-dot {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 5px;
-    height: 5px;
-    background-color: green;
-    border-radius: 50%;
-  }
-  #current-month-header {
-    display: grid;
-    grid-template-columns: 90% 5% 5%;
-    border: 1px solid red;
-    border-radius: 5px 5px 0 0;
-  }
-  #current-month-header #current-month-display {
-    padding: 0 1%;
-  }
-  #current-month-header #current-month-display p {
-    text-transform: uppercase;
-  }
-}/*# sourceMappingURL=index.css.map */
+textarea {
+  margin: 0.5rem 0;
+  resize: none;
+  text-align: center;
+  width: 80%;
+}
+textarea:focus {
+  outline: none;
+}
+textarea:focus::-moz-placeholder {
+  color: transparent;
+}
+textarea:focus::placeholder {
+  color: transparent;
+}
+
+#notes-header {
+  margin: 0;
+  padding: 0;
+}
+
+textarea,
+input {
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#notes-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#notes-wrapper {
+  background: linear-gradient(to bottom right, transparent, #ef7f1b);
+  width: 100%;
+  height: 95%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=index_computer.css.map */
