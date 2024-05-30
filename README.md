@@ -1,8 +1,44 @@
-Le cartelle delle pagine web statiche hanno nome Pagine_statiche_xxxxxxx  dove xxxxx indica la funzione svolta dal gruppo di lavoro
+# Pronto Emergenza - Documentazione
 
-La cartella PE è quella in cui saranno via via inserite le pagine funzionanti del progetto PHP complessivo
+Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". Di seguito è fornita una descrizione di come dovranno essere le principali cartelle e verranno illustrati i file degni di nota presenti nel progetto.
 
-Il file Globals.php contiene var globali (come dati x accedere al server dbms corretto) e procedure di utilità varia
-Il file db.php contine la classe che permette di accedere al DB e realizzare le query (di qualsiasi tipo) ottenendo in uscita risultati da usare nella pegina web
+## Struttura delle Cartelle
 
-Possibile realizzare funzioni nel codice che al loro interno creino l'oggetto di classe DB, impostino la query, usino i metodi e tornino all'ambiente chiamante i dati cosi come sono restituiti dall'oggetto.
+- **Pagine_Statiche_xxxxxxx**: Le cartelle che contengono le pagine web statiche. Il suffisso `xxxxxx` indica la funzione specifica svolta dal gruppo di lavoro responsabile della cartella.
+  
+- **PE**: Questa cartella contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto.
+
+## File Principali
+
+- **globals.php**: Contiene variabili globali, come i dati necessari per accedere al server DBMS corretto, e procedure di utilità varia.
+  
+- **db.php**: Contiene la classe `DB` che permette di accedere al database e realizzare query di qualsiasi tipo, restituendo i risultati utilizzabili nelle pagine web.
+
+## Configurazione del Database
+
+Il file `db.php` contiene la classe `DB` che esegue tutte le operazioni sul database utilizzando la classe PDO.
+È possibile creare funzioni nel codice che, al loro interno, creino un oggetto della classe `DB`, impostino la query, utilizzino i metodi della classe e restituiscano i dati all'ambiente chiamante così come sono stati restituiti dall'oggetto `DB`.
+
+#### Esempio di Funzione che Utilizza la Classe DB
+
+```php
+function example($parametri) {
+    // Creazione dell'oggetto DB
+    $db = new \lib\DB();
+    
+    // Impostazione della query
+    $query = "SELECT * FROM tabella WHERE colonna = :parametro";
+    
+    // Esecuzione della query
+    $risultati = $db->query($query, [[':parametro', $parametri]]);
+    
+    // Restituzione dei risultati
+    return $risultati;
+}
+```
+
+In questo esempio, la funzione `example()` crea un oggetto `DB`, imposta ed esegue una query, e restituisce i risultati ottenuti dalla query.
+
+---
+
+Per ulteriori informazioni o domande, non esitare a contattare i responsabili.

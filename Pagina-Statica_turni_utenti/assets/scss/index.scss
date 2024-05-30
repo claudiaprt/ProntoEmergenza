@@ -1,0 +1,324 @@
+@font-face {
+    font-family: "Sonic";
+    src: url("../fonts/sonic.ttf");
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../fonts/cairo.ttf");
+}
+
+* {
+    user-select: none;
+    font-family: "Cairo", sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    width: 100%;
+    height: 100%;
+
+    #calendar {
+        margin: 1%;
+        height: 98%;
+    }
+
+    #main-content {
+        height: 85%;
+        margin: 1%;
+    }
+}
+
+#calendar-wrapper {
+    border-radius: 5px;
+    margin: 1%;
+    background-color: rgba(128, 128, 128, 0.5);
+
+    #calendar-header {
+        display: flex;
+        flex-direction: row;
+        padding: 0 1rem;
+
+        >* {
+            padding: 0 0.25rem;
+        }
+    }
+
+    #calendar-controls {
+        display: grid;
+        grid-template-columns: 10% 80% 10%;
+        padding: 0 1rem;
+
+        >div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        >#prev-month,
+        #next-month {
+            height: 50%;
+            margin: auto 0;
+            border-radius: 2.5px;
+
+            &:hover {
+                background-color: rgba(128, 128, 128, 0.25);
+            }
+        }
+    }
+
+    #calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        padding: 1rem;
+
+        .day {
+            position: relative;
+            text-align: center;
+            border-radius: 5px;
+
+            &:hover:not(.enabled) {
+                background-color: rgba(128, 128, 128, 0.25);
+            }
+
+            &.disabled {
+                opacity: 0.5;
+            }
+
+            &.enabled {
+                background-color: rgba(128, 128, 128, 0.75);
+            }
+
+            &.empty {
+                display: none;
+            }
+        }
+
+        .red-dot {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 5px;
+            height: 5px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .orange-dot {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 5px;
+            height: 5px;
+            background-color: orange;
+            border-radius: 50%;
+        }
+
+        .green-dot {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 5px;
+            height: 5px;
+            background-color: green;
+            border-radius: 50%;
+        }
+    }
+}
+
+#current-month-header {
+    display: grid;
+    grid-template-columns: 90% 5% 5%;
+    border: 1px solid red;
+    border-radius: 5px 5px 0 0;
+
+    #current-month-display {
+        padding: 0 1%;
+
+        p {
+            text-transform: uppercase;
+        }
+    }
+
+    #calendar-options,
+    #settings-options {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+#schedule {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    height: 100%;
+    border: 1px solid red;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+
+    #schedule-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: gray;
+
+        #schedule-date {
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    #schedule-details {
+        border-radius: 0 0 5px 5px;
+        background-color: green;
+        display: grid;
+        grid-template-rows: 10% 30% 30% 30%;
+        grid-template-columns: 10% 30% 30% 30%;
+
+        .time-slot {
+            border: 1px solid black;
+        }
+
+        .role,
+        .shift,
+        .shift-detail {
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .last-shift {
+            border-radius: 0 0 0 5px;
+        }
+
+        .shift-detail {
+            flex-direction: column;
+
+            &:last-child {
+                border-radius: 0 0 5px 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #grid-container {
+        grid-template-columns: 100%;
+
+        #calendar {
+            display: none;
+        }
+
+        #main-content {
+            height: 100%;
+        }
+    }
+
+    #calendar-wrapper {
+        #calendar-header {
+            display: none;
+        }
+
+        #calendar-controls {
+            grid-template-columns: 10% 80% 10%;
+
+            #prev-month,
+            #next-month {
+                height: 50%;
+                margin: auto 0;
+                border-radius: 2.5px;
+
+                &:hover {
+                    background-color: rgba(128, 128, 128, 0.25);
+                }
+            }
+        }
+
+        #calendar-grid {
+            padding: 1rem;
+
+            .day {
+                position: relative;
+                text-align: center;
+                border-radius: 5px;
+
+                &:hover:not(.enabled) {
+                    background-color: rgba(128, 128, 128, 0.25);
+                }
+
+                &.disabled {
+                    opacity: 0.5;
+                }
+
+                &.enabled {
+                    background-color: rgba(128, 128, 128, 0.75);
+                }
+
+                &.empty {
+                    display: none;
+                }
+            }
+
+            .red-dot {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                width: 5px;
+                height: 5px;
+                background-color: red;
+                border-radius: 50%;
+            }
+
+            .orange-dot {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                width: 5px;
+                height: 5px;
+                background-color: orange;
+                border-radius: 50%;
+            }
+
+            .green-dot {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                width: 5px;
+                height: 5px;
+                background-color: green;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    #current-month-header {
+        display: grid;
+        grid-template-columns: 90% 5% 5%;
+        border: 1px solid red;
+        border-radius: 5px 5px 0 0;
+
+        #current-month-display {
+            padding: 0 1%;
+
+            p {
+                text-transform: uppercase;
+            }
+        }
+    }
+}
