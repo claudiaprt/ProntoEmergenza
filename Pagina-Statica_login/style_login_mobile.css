@@ -154,7 +154,7 @@ input[type=text], input[type=password]:focus {
     width: auto;
     margin: 0 auto;
     left: 50%;
-    top: 61%;
+    top: 48%; /* Posiziona il messaggio di errore sopra il form */
     transform: translateX(-50%);
     text-align: center;
     font-family: "Montserrat", Helvetica;
