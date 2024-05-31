@@ -5,8 +5,15 @@ Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". D
 ## Struttura delle Cartelle
 
 - **Pagine_Statiche_xxxxxxx**: Contiene le pagine web statiche. Il suffisso `xxxxxx` indica la funzione specifica svolta dal gruppo di lavoro responsabile della cartella.
+- **Pagine_Dinamiche_xxxxxx**: 
   
-- **PE**: Contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto.
+- **PE**: Contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto. ( QUESTA CARTELLA VIENE USATA SOLO DAI CAPOPROGETTI OSSIA I DOCENTI!!!!!!)
+- La root del sito dovrà contenere le seguenti cartelle (uguali per tutti):
+  - **lib** : file php di libreria (globals.php, db.php)
+  - **css** : file css
+  - **js** : file js
+  - **img**: file immagini
+  - **api**: web services per programmazione via ajaj
 
 #### Pagine dinamiche in PHP: considerazioni generali
 **1** L'header di ogni pagina sarà prodotta da un solo gruppo (già assegnato) che si preoccuperà di ottenere un header per la versione desktop ed un header (con burger menu) per la versione mobile. Appena pronta saranno forniti i seguenti file : 
