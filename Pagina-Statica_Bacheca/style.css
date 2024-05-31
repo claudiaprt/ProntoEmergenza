@@ -71,11 +71,12 @@
   /* Stili CSS per lo switch */
   .switch {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 60px;
     height: 34px;
-    background-color: #ccc;
+    background-color: #ebebeb;
     border-radius: 17px;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(0, 0, 0, 0.4);
     cursor: pointer;
   }
 
@@ -86,9 +87,10 @@
     left: 2px;
     width: 30px;
     height: 30px;
-    background-color: white;
+    background: linear-gradient(180deg,#ffcc89,rgba(239, 127, 27, 1));
     border-radius: 50%;
     transition: transform 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   }
 
   input[type="checkbox"] {
@@ -97,6 +99,7 @@
 
   input[type="checkbox"]:checked + .switch::after {
     transform: translateX(26px); /* Posizione per lo stato attivo */
+    background-color: #ebebeb;
   }
   .immagine-logo{
     margin-left: 50px;
@@ -109,6 +112,11 @@
 
   .button-item {
     list-style-type: none;
+  }
+  .frame{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .styled-button {
@@ -165,6 +173,28 @@
     border: none;
 
   }
+  .search-label{
+    display: flex;
+    align-items: center;
+  }
+
+  .ellipse {
+    width: 52px;
+    height: 52px;
+    background-color: #ef7f1b;
+    border-radius: 26px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 15px;
+  }
+  .piu{
+    color: white;
+    font-size: 40px;
+  }
+  
   .only-mobile{
     display: none;
   }
@@ -185,11 +215,12 @@
   }
   .switch {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 60px;
     height: 34px;
-    background-color: #ccc;
+    background-color: #ebebeb;
     border-radius: 17px;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(0, 0, 0, 0.4);
     cursor: pointer;
   }
 
@@ -200,9 +231,19 @@
     left: 2px;
     width: 30px;
     height: 30px;
-    background-color: white;
+    background: linear-gradient(180deg,#ffcc89,rgba(239, 127, 27, 1));
     border-radius: 50%;
     transition: transform 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  input[type="checkbox"] {
+    display: none; /* Nasconde la checkbox */
+  }
+
+  input[type="checkbox"]:checked + .switch::after {
+    transform: translateX(26px); /* Posizione per lo stato attivo */
+    background-color: #ebebeb;
   }
 
   .p {
@@ -218,6 +259,8 @@
   .frame {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    
   }
   .div-wrapper {
     display: flex;
@@ -297,6 +340,22 @@
     margin: 50px auto;
     padding: 20px;
     border-radius: 5px;
+  }
+  .ellipse{
+    width: 52px;
+    height: 52px;
+    background-color: #ef7f1b;
+    border-radius: 26px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 15px;
+  }
+  .piu{
+    color: white;
+    font-size: 40px;
   }
 }
 
