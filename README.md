@@ -2,10 +2,14 @@
 
 Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". Di seguito è fornita una descrizione delle principali cartelle e dei file degni di nota presenti nel progetto.
 
+Il passaggio da DESKTOP a MOBILE:
+**DESKTOP**  MIN-WIDTH  701
+**MOBILE**   MAX-WIDTH  700
+
 ## Struttura delle Cartelle
 
 - **Pagine_Statiche_xxxxxxx**: Contiene le pagine web statiche. Il suffisso `xxxxxx` indica la funzione specifica svolta dal gruppo di lavoro responsabile della cartella.
-- **Pagine_Dinamiche_xxxxxx**: 
+- **Pagine_Dinamiche_xxxxxx**: contiene il backup delle pagine dinamiche che state realizzando
   
 - **PE**: Contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto. ( QUESTA CARTELLA VIENE USATA SOLO DAI CAPOPROGETTI OSSIA I DOCENTI!!!!!!)
 - La root del sito dovrà contenere le seguenti cartelle (uguali per tutti):
@@ -17,7 +21,7 @@ Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". D
 
 #### Pagine dinamiche in PHP: considerazioni generali
 **1** L'header di ogni pagina sarà prodotta da un solo gruppo (già assegnato) che si preoccuperà di ottenere un header per la versione desktop ed un header (con burger menu) per la versione mobile. Appena pronta saranno forniti i seguenti file : 
-  *) header.php da includere al posto del <div class=header>.....</div> che ora avete nei vostri file
+  *) header.php da includere al posto del div class=header che ora avete nei vostri file
   *) header_mobile.css. header_desktop.css e function_header.js da includere nella sezione <head> della propria pagina
 
 
