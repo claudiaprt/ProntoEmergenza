@@ -1,5 +1,5 @@
 /* Stili CSS */
-@media screen and (min-width: 501px) {
+@media screen and (min-width: 641px) {
   body{
     font-family: var(--PULSANTI-font-family);
   }
@@ -171,7 +171,10 @@
 }
 
 /*mobile*/
-@media screen and (max-width: 500px){
+@media screen and (max-width: 640px){
+  body{
+    font-family: var(--PULSANTI-font-family);
+  }
   .only-desktop{
     display: none;
   }
