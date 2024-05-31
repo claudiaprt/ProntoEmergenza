@@ -8,6 +8,26 @@ Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". D
   
 - **PE**: Contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto.
 
+#### Pagine dinamiche in PHP: considerazioni generali
+**1** L'header di ogni pagina sarà prodotta da un solo gruppo (già assegnato) che si preoccuperà di ottenere un header per la versione desktop ed un header (con burger menu) per la versione mobile. Appena pronta saranno forniti i seguenti file : 
+  *) header.php da includere al posto del <div class=header>.....</div> che ora avete nei vostri file
+  *) header_mobile.css. header_desktop.css e function_header.js da includere nella sezione <head> della propria pagina
+
+
+**2** Ogni pagina prodotta di qualsiasi funzionalità dovrà testare l'esistenza della sessione, senza la quale si deve redirezionare a login.php con codice del tipo
+<?php
+   session_start();
+   if (!isset($_SESSION['ruolo']))
+       header("Location:login.php");
+   else   {
+   ?>
+   <!-- codice html +php della pagina web da produrre -->
+   <?php
+   }
+   ?>
+
+
+
 ## File Principali
 
 I seguenti file PHP di libreria si trovano nella cartella `lib`:
