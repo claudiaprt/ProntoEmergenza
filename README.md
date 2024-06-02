@@ -26,7 +26,7 @@ Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". D
    - `header.php` da includere al posto del div `class="header"` attualmente presente nei file.
    - `header_mobile.css`, `header_desktop.css` e `function_header.js` da includere nella sezione `<head>` della propria pagina.
 
-2. **Verifica della Sessione**: Ogni pagina prodotta deve verificare l'esistenza della sessione. Senza sessione, l'utente deve essere reindirizzato a `login.php` con il seguente codice:
+2. **Verifica della Sessione**: Ogni pagina prodotta deve verificare l'esistenza della sessione. Senza sessione, l'utente deve essere reindirizzato a `login.php` con codice simile al seguente:
 
    ```php
    <?php
@@ -35,7 +35,7 @@ Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". D
        header("Location: login.php");
    } else {
    ?>
-   <!-- codice HTML + PHP della pagina web da produrre -->
+   <!-- Codice HTML + PHP della pagina web da produrre -->
    <?php
    }
    ?>
