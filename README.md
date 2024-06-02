@@ -1,4 +1,4 @@
-# Pronto Emergenza - Documentazione
+# Pronto Emergenza
 
 Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". Di seguito è fornita una descrizione delle principali cartelle e dei file degni di nota presenti nel progetto.
 
