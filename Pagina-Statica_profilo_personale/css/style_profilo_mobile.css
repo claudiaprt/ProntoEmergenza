@@ -103,14 +103,18 @@ p{
   color: white;
   font-size: 16px;
   font-weight: 500;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
+  border-radius: 28px;
 }
 
-a {
+.bottone-modifica a{
   text-decoration: none;
-  color: inherit;
+  color: white;
+  width: 250px;
+  height: 44px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .freccia-dx{

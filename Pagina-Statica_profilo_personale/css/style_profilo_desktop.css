@@ -156,7 +156,16 @@ p{
   border-radius: 28px;
   color: white;
   font-size: 16px;
-  cursor: pointer;
+}
+
+.bottone-modifica a{
+  text-decoration: none;
+  color: white;
+  width: 150px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Flexbox layout adjustments */
