@@ -73,13 +73,13 @@ body {
   align-items: center;
   justify-content: center;
 }
-#calendar-wrapper #calendar-controls > #prev-month,
+#calendar-wrapper #calendar-controls #prev-month,
 #calendar-wrapper #calendar-controls #next-month {
   height: 50%;
   margin: auto 0;
   border-radius: 2.5px;
 }
-#calendar-wrapper #calendar-controls > #prev-month:hover,
+#calendar-wrapper #calendar-controls #prev-month:hover,
 #calendar-wrapper #calendar-controls #next-month:hover {
   background-color: rgba(128, 128, 128, 0.25);
 }
@@ -111,55 +111,24 @@ body {
 #calendar-wrapper #calendar-grid .day.enabled:hover {
   background-color: rgba(128, 128, 128, 0.5);
 }
-#calendar-wrapper #calendar-grid .red-dot {
+#calendar-wrapper #calendar-grid .day .red-dot,
+#calendar-wrapper #calendar-grid .day .orange-dot,
+#calendar-wrapper #calendar-grid .day .green-dot {
   position: absolute;
   top: 5px;
   right: 5px;
   width: 5px;
   height: 5px;
+  border-radius: 50%;
+}
+#calendar-wrapper #calendar-grid .day .red-dot {
   background-color: red;
-  border-radius: 50%;
 }
-#calendar-wrapper #calendar-grid .orange-dot {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 5px;
-  height: 5px;
+#calendar-wrapper #calendar-grid .day .orange-dot {
   background-color: orange;
-  border-radius: 50%;
 }
-#calendar-wrapper #calendar-grid .green-dot {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 5px;
-  height: 5px;
+#calendar-wrapper #calendar-grid .day .green-dot {
   background-color: green;
-  border-radius: 50%;
-}
-
-#current-month-header {
-  display: grid;
-  grid-template-columns: 90% 5% 5%;
-  border: 1px solid black;
-  border-radius: 5px 5px 0 0;
-}
-#current-month-header #current-month-display {
-  padding: 0 1%;
-}
-#current-month-header #current-month-display p {
-  text-transform: uppercase;
-}
-#current-month-header #calendar-options,
-#current-month-header #settings-options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#current-month-header #calendar-options:hover,
-#current-month-header #settings-options:hover {
-  background-color: rgba(128, 128, 128, 0.25);
 }
 
 #schedule {
@@ -208,32 +177,48 @@ body {
   border: 1px solid black;
   position: relative;
 }
+#schedule #schedule-details > div:not(.shift-detail) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #schedule #schedule-details > div:nth-child(n+5) {
   border-top: none;
 }
 #schedule #schedule-details > div:nth-child(n):not(:nth-child(4n)) {
   border-right: none;
 }
-#schedule #schedule-details .notes {
+#schedule #schedule-details > div.last-shift {
+  border-radius: 0 0 0 5px;
+}
+#schedule #schedule-details > div .notes {
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0.16rem;
   right: 0.5rem;
 }
-#schedule #schedule-details .role,
-#schedule #schedule-details .shift,
-#schedule #schedule-details .shift-detail {
+#schedule #schedule-details > div .role,
+#schedule #schedule-details > div .shift {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-#schedule #schedule-details .last-shift {
-  border-radius: 0 0 0 5px;
+#schedule #schedule-details > .shift-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#schedule #schedule-details .shift-detail {
+#schedule #schedule-details > .shift-detail > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
-#schedule #schedule-details .shift-detail:last-child {
+#schedule #schedule-details > .shift-detail > div > p {
+  margin: 0;
+  padding: 0;
+}
+#schedule #schedule-details > .shift-detail:last-child {
   border-radius: 0 0 5px 0;
 }
 
@@ -253,11 +238,6 @@ textarea:focus::placeholder {
   color: transparent;
 }
 
-#notes-header {
-  margin: 0;
-  padding: 0;
-}
-
 textarea,
 input {
   border: none;
@@ -265,19 +245,71 @@ input {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+textarea {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #notes-form {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-#notes-wrapper {
+#notes-form #notes-wrapper {
   background: linear-gradient(to bottom right, transparent, #ef7f1b);
   width: 100%;
   height: 95%;
   border-radius: 5px;
+  display: grid;
+  grid-template-rows: 15% 60% 20%;
+}
+#notes-form #notes-wrapper > div:not(:first-child) {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#notes-form #notes-wrapper #notes-header {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 1rem;
+}
+#notes-form #notes-wrapper #notes-header > div:first-child {
+  filter: invert(100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#notes-form #notes-wrapper #notes-header > * {
+  padding: 0 0.25rem;
+}
+
+#current-month-header {
+  display: grid;
+  grid-template-columns: 90% 5% 5%;
+  border: 1px solid black;
+  border-radius: 5px 5px 0 0;
+}
+#current-month-header #current-month-display {
+  padding: 0 1%;
+}
+#current-month-header #current-month-display p {
+  text-transform: uppercase;
+}
+#current-month-header #calendar-options,
+#current-month-header #settings-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#current-month-header #calendar-options:hover,
+#current-month-header #settings-options:hover {
+  background-color: rgba(128, 128, 128, 0.25);
 }/*# sourceMappingURL=index.css.map */

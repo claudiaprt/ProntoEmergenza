@@ -1,316 +1,338 @@
-@font-face {
-    font-family: "Sonic";
-    src: url("../../../fonts/sonic.ttf");
-}
+@import "../../computer/scss/index";
 
-@font-face {
-    font-family: "Cairo";
-    src: url("../../../fonts/cairo.ttf");
-}
-
-* {
-    user-select: none;
-    cursor: default;
-    font-family: "Cairo", sans-serif;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    height: 100%;
-}
-
-#grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    gap: 1rem;
-}
-
-#calendar {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    height: 100%;
-    gap: 1rem;
-}
-
-#calendar-wrapper {
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    border-radius: 5px;
-    background: linear-gradient(to bottom right, transparent, #262b5b);
-    gap: 0.5rem;
-
-    #calendar-header {
+@media (max-width: 700px) {
+    #grid-container {
         display: grid;
-        grid-template-columns: 1fr 4fr;
-        padding: 0 1rem;
-        gap: 0.5rem;
+        grid-template-columns: 100%;
+        width: 100%;
+        height: 100%;
 
-        >div:first-child {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        >div {
+            margin: 0.25rem;
         }
 
-        >* {
-            padding: 0 0.25rem;
+        #calendar {
+            display: grid;
+            grid-template-rows: 75% 25%;
+            height: 98%;
+        }
+
+        #main-content {
+            height: 85%;
         }
     }
 
-    #calendar-controls {
+    #calendar-wrapper {
         display: grid;
-        grid-template-columns: 1fr 4fr 1fr;
-        padding: 0 1rem;
-        gap: 0.5rem;
+        grid-template-rows: 10% 10% 80%;
+        border-radius: 5px;
+        background: linear-gradient(to bottom right, transparent, #262b5b);
 
-        >div {
+        #calendar-header {
+            display: grid;
+            grid-template-columns: 15% 85%;
+            padding: 0 1rem;
+
+            >div:first-child {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            >* {
+                padding: 0 0.25rem;
+            }
+        }
+
+        #calendar-controls {
+            display: grid;
+            grid-template-columns: 10% 80% 10%;
+            padding: 0 1rem;
+
+            >div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #prev-month,
+            #next-month {
+                height: 50%;
+                margin: auto 0;
+                border-radius: 2.5px;
+
+                &:hover {
+                    background-color: rgba(128, 128, 128, 0.25);
+                }
+            }
+        }
+
+        #calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            padding: 0.5rem 1rem;
+
+            .day {
+                position: relative;
+                text-align: center;
+                border-radius: 5px;
+                margin: 0.05rem;
+                height: 75%;
+
+                &:hover:not(.enabled) {
+                    background-color: rgba(128, 128, 128, 0.25);
+                }
+
+                &.disabled {
+                    opacity: 0.5;
+
+                    >span {
+                        display: none;
+                    }
+                }
+
+                &.enabled {
+                    background-color: rgba(128, 128, 128, 0.75);
+
+                    &:hover {
+                        background-color: rgba(128, 128, 128, 0.5);
+                    }
+                }
+
+                .red-dot,
+                .orange-dot,
+                .green-dot {
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                }
+
+                .red-dot {
+                    background-color: red;
+                }
+
+                .orange-dot {
+                    background-color: orange;
+                }
+
+                .green-dot {
+                    background-color: green;
+                }
+            }
+        }
+    }
+
+    #schedule {
+        display: grid;
+        grid-template-rows: 20% 80%;
+        height: 100%;
+        border-top: none;
+
+        #schedule-header {
+            display: grid;
+            padding: 0.5rem;
+            border-width: 1px 1px 0 1px;
+            border-style: solid;
+            border-color: black;
+            grid-template-columns: 85% 7.5% 7.5%;
+            border-radius: 5px 5px 0 0;
+            background-color: #262b5b;
+
+            >p {
+                color: white;
+                margin: 0;
+                padding: 0;
+            }
+
+            >* {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                border-radius: 5px;
+                margin: 0 0.25rem;
+
+                &:not(:first-child) {
+                    justify-content: center;
+                }
+
+                &:hover:not(:first-child) {
+                    background-color: rgba(128, 128, 128, 0.25);
+                }
+            }
+
+            #schedule-date {
+                text-transform: uppercase;
+            }
+        }
+
+        #schedule-details {
+            border-radius: 0 0 5px 5px;
+            display: grid;
+            grid-template-rows: 10% 30% 30% 30%;
+            grid-template-columns: 10% 30% 30% 30%;
+
+            >div {
+                border: 1px solid black;
+                position: relative;
+
+                &:not(.shift-detail) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                &:nth-child(n+5) {
+                    border-top: none;
+                }
+
+                &:nth-child(n):not(:nth-child(4n)) {
+                    border-right: none;
+                }
+
+                &.last-shift {
+                    border-radius: 0 0 0 5px;
+                }
+
+                .notes {
+                    position: absolute;
+                    bottom: 0.16rem;
+                    right: 0.5rem;
+                }
+
+                .role,
+                .shift {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+            }
+
+            >.shift-detail {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                >div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    >p {
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+
+                &:last-child {
+                    border-radius: 0 0 5px 0;
+                }
+            }
+        }
+    }
+
+    textarea {
+        margin: 0.5rem 0;
+        resize: none;
+        text-align: center;
+        width: 80%;
+
+        &:focus {
+            outline: none;
+
+            &::placeholder {
+                color: transparent;
+            }
+        }
+    }
+
+    textarea,
+    input {
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    textarea {
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input {
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #notes-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        #notes-wrapper {
+            background: linear-gradient(to bottom right, transparent, #ef7f1b);
+            width: 100%;
+            height: 95%;
+            border-radius: 5px;
+            display: grid;
+            grid-template-rows: 15% 60% 20%;
+
+            >div:not(:first-child) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #notes-header {
+                display: grid;
+                grid-template-columns: 15% 85%;
+                padding: 0 1rem;
+
+                >div:first-child {
+                    filter: invert(100%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                >* {
+                    padding: 0 0.25rem;
+                }
+            }
+        }
+    }
+
+    #current-month-header {
+        display: grid;
+        grid-template-columns: 90% 5% 5%;
+        border: 1px solid black;
+        border-radius: 5px 5px 0 0;
+
+        #current-month-display {
+            padding: 0 1%;
+
+            p {
+                text-transform: uppercase;
+            }
+        }
+
+        #calendar-options,
+        #settings-options {
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        >#prev-month,
-        #next-month {
-            height: 50%;
-            margin: auto 0;
-            border-radius: 2.5px;
 
             &:hover {
                 background-color: rgba(128, 128, 128, 0.25);
             }
         }
     }
-
-    #calendar-grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        gap: 0.25rem;
-        padding: 0.5rem 1rem;
-
-        .day {
-            position: relative;
-            text-align: center;
-            border-radius: 5px;
-            margin: 0.05rem;
-            height: auto;
-
-            &:hover:not(.enabled) {
-                background-color: rgba(128, 128, 128, 0.25);
-            }
-
-            &.disabled {
-                opacity: 0.5;
-
-                >span {
-                    display: none;
-                }
-            }
-
-            &.enabled {
-                background-color: rgba(128, 128, 128, 0.75);
-
-                &:hover {
-                    background-color: rgba(128, 128, 128, 0.5);
-                }
-            }
-        }
-
-        .red-dot,
-        .orange-dot,
-        .green-dot {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-        }
-
-        .red-dot {
-            background-color: red;
-        }
-
-        .orange-dot {
-            background-color: orange;
-        }
-
-        .green-dot {
-            background-color: green;
-        }
-    }
-}
-
-#current-month-header {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    border: 1px solid black;
-    border-radius: 5px 5px 0 0;
-
-    #current-month-display {
-        padding: 0 1%;
-
-        p {
-            text-transform: uppercase;
-        }
-    }
-
-    #calendar-options,
-    #settings-options {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-            background-color: rgba(128, 128, 128, 0.25);
-        }
-    }
-}
-
-#schedule {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100%;
-    border-top: none;
-
-    #schedule-header {
-        display: grid;
-        padding: 0.5rem;
-        border-width: 1px 1px 0 1px;
-        border-style: solid;
-        border-color: black;
-        grid-template-columns: 1fr auto auto;
-        border-radius: 5px 5px 0 0;
-        background-color: #262b5b;
-
-        >p {
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        >* {
-            display: flex;
-            align-items: center;
-            border-radius: 5px;
-            margin: 0 0.25rem;
-            padding: 0.5rem;
-
-            &:not(:first-child) {
-                justify-content: center;
-            }
-
-            &:hover:not(:first-child) {
-                background-color: rgba(128, 128, 128, 0.25);
-            }
-        }
-
-        #schedule-date {
-            text-transform: uppercase;
-        }
-    }
-
-    #schedule-details {
-        border-radius: 0 0 5px 5px;
-        display: grid;
-        grid-template-rows: auto auto auto auto;
-        grid-template-columns: 1fr 3fr 3fr 3fr;
-
-        >div {
-            border: 1px solid black;
-            position: relative;
-
-            &:nth-child(n + 5) {
-                border-top: none;
-            }
-
-            &:nth-child(n):not(:nth-child(4n)) {
-                border-right: none;
-            }
-        }
-
-        & .notes {
-            position: absolute;
-            bottom: 0.05rem;
-            right: 0.25rem;
-        }
-
-        .time-slot {}
-
-        .role,
-        .shift,
-        .shift-detail {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .last-shift {
-            border-radius: 0 0 0 5px;
-        }
-
-        .shift-detail {
-            flex-direction: column;
-
-            &:last-child {
-                border-radius: 0 0 5px 0;
-            }
-        }
-    }
-}
-
-textarea {
-    margin: 0.5rem 0;
-    resize: none;
-    text-align: center;
-
-    &:focus {
-        outline: none;
-
-        &::placeholder {
-            color: transparent;
-        }
-    }
-
-    width: 80%;
-}
-
-#notes-header {
-    margin: 0;
-    padding: 0;
-}
-
-textarea,
-input {
-    border: none;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-#notes-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#notes-wrapper {
-    padding: 0.5rem 0;
-    background: linear-gradient(to bottom right, transparent, #ef7f1b);
-    width: 100%;
-    height: 95%;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }

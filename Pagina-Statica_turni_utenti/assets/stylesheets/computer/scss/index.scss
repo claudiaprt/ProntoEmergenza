@@ -80,7 +80,7 @@ body {
             justify-content: center;
         }
 
-        >#prev-month,
+        #prev-month,
         #next-month {
             height: 50%;
             margin: auto 0;
@@ -124,62 +124,29 @@ body {
                     background-color: rgba(128, 128, 128, 0.5);
                 }
             }
-        }
 
-        .red-dot {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 5px;
-            height: 5px;
-            background-color: red;
-            border-radius: 50%;
-        }
+            .red-dot,
+            .orange-dot,
+            .green-dot {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+            }
 
-        .orange-dot {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 5px;
-            height: 5px;
-            background-color: orange;
-            border-radius: 50%;
-        }
+            .red-dot {
+                background-color: red;
+            }
 
-        .green-dot {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 5px;
-            height: 5px;
-            background-color: green;
-            border-radius: 50%;
-        }
-    }
-}
+            .orange-dot {
+                background-color: orange;
+            }
 
-#current-month-header {
-    display: grid;
-    grid-template-columns: 90% 5% 5%;
-    border: 1px solid black;
-    border-radius: 5px 5px 0 0;
-
-    #current-month-display {
-        padding: 0 1%;
-
-        p {
-            text-transform: uppercase;
-        }
-    }
-
-    #calendar-options,
-    #settings-options {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-            background-color: rgba(128, 128, 128, 0.25);
+            .green-dot {
+                background-color: green;
+            }
         }
     }
 }
@@ -236,6 +203,12 @@ body {
             border: 1px solid black;
             position: relative;
 
+            &:not(.shift-detail) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
             &:nth-child(n+5) {
                 border-top: none;
             }
@@ -243,31 +216,44 @@ body {
             &:nth-child(n):not(:nth-child(4n)) {
                 border-right: none;
             }
+
+            &.last-shift {
+                border-radius: 0 0 0 5px;
+            }
+
+            .notes {
+                position: absolute;
+                bottom: 0.16rem;
+                right: 0.5rem;
+            }
+
+            // .time-slot {}
+
+            .role,
+            .shift {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
         }
 
-        & .notes {
-            position: absolute;
-            bottom: 0.5rem;
-            right: 0.5rem;
-        }
-
-        .time-slot {}
-
-        .role,
-        .shift,
-        .shift-detail {
+        >.shift-detail {
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-        }
 
-        .last-shift {
-            border-radius: 0 0 0 5px;
-        }
+            >div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
 
-        .shift-detail {
-            flex-direction: column;
+                >p {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
 
             &:last-child {
                 border-radius: 0 0 5px 0;
@@ -280,6 +266,7 @@ textarea {
     margin: 0.5rem 0;
     resize: none;
     text-align: center;
+    width: 80%;
 
     &:focus {
         outline: none;
@@ -288,13 +275,6 @@ textarea {
             color: transparent;
         }
     }
-
-    width: 80%;
-}
-
-#notes-header {
-    margin: 0;
-    padding: 0;
 }
 
 textarea,
@@ -304,19 +284,79 @@ input {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+textarea {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #notes-form {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    #notes-wrapper {
+        background: linear-gradient(to bottom right, transparent, #ef7f1b);
+        width: 100%;
+        height: 95%;
+        border-radius: 5px;
+        display: grid;
+        grid-template-rows: 15% 60% 20%;
+
+        >div:not(:first-child) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #notes-header {
+            display: grid;
+            grid-template-columns: 15% 85%;
+            padding: 0 1rem;
+
+            >div:first-child {
+                filter: invert(100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            >* {
+                padding: 0 0.25rem;
+            }
+        }
+    }
 }
 
-#notes-wrapper {
-    background: linear-gradient(to bottom right, transparent, #ef7f1b);
-    width: 100%;
-    height: 95%;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#current-month-header {
+    display: grid;
+    grid-template-columns: 90% 5% 5%;
+    border: 1px solid black;
+    border-radius: 5px 5px 0 0;
+
+    #current-month-display {
+        padding: 0 1%;
+
+        p {
+            text-transform: uppercase;
+        }
+    }
+
+    #calendar-options,
+    #settings-options {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            background-color: rgba(128, 128, 128, 0.25);
+        }
+    }
 }
