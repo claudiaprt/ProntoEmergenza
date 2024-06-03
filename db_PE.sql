@@ -515,6 +515,8 @@ CREATE TABLE IF NOT EXISTS `utenti` (
   `tipoUtente` enum('admin','user') NOT NULL,
   PRIMARY KEY (`idUtente`) USING BTREE,
   UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `codiceFiscale` (`codiceFiscale`)
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
