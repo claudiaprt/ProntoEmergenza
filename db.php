@@ -5,10 +5,8 @@
     use PDO;
     use PDOException;
     use PDOStatement;
-    //converrebbe adottare una soluzione dinamica, come require_once realpath(__DIR__ . DIRECTORY_SEPARATOR . "lib". DIRECTORY_SEPARATOR . "globals.php");
-    //altrimenti, se si riferisce alla globals.php nella root del repos, non basterebbe include_once "globals.php"?
     require_once "E:\\scuola\\xampp\\htdocs\\PranziOnLine\\lib\\globals.php";
-   // require_once "E:\\scuola\\xampp\\htdocs\\PranziOnLine\\lib\\globals.php";
+    //require_once "E:\\scuola\\xampp\\htdocs\\PranziOnLine\\lib\\globals.php";
     //require_once $_SERVER["DOCUMENT_ROOT"]."\\lib\\globals.php";
 
     //include_once Globals::autoload("globals.php");

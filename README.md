@@ -1,69 +1,70 @@
-# Pronto Emergenza - Documentazione
+# Pronto Emergenza
 
 Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". Di seguito è fornita una descrizione delle principali cartelle e dei file degni di nota presenti nel progetto.
 
-Il passaggio da DESKTOP a MOBILE:
-**DESKTOP**  MIN-WIDTH  701
-**MOBILE**   MAX-WIDTH  700
+## Breakpoint per Responsività
+
+- **DESKTOP**: `min-width: 701px`
+- **MOBILE**: `max-width: 700px`
 
 ## Struttura delle Cartelle
 
 - **Pagine_Statiche_xxxxxxx**: Contiene le pagine web statiche. Il suffisso `xxxxxx` indica la funzione specifica svolta dal gruppo di lavoro responsabile della cartella.
-- **Pagine_Dinamiche_xxxxxx**: contiene il backup delle pagine dinamiche che state realizzando
-  
-- **PE**: Contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto. ( QUESTA CARTELLA VIENE USATA SOLO DAI CAPOPROGETTI OSSIA I DOCENTI!!!!!!)
-- La root del sito dovrà contenere le seguenti cartelle (uguali per tutti):
-  - **lib** : file php di libreria (globals.php, db.php)
-  - **css** : file css
-  - **js** : file js
-  - **img**: file immagini
-  - **api**: web services per programmazione via ajaj
+- **Pagine_Dinamiche_xxxxxx**: Contiene il backup delle pagine dinamiche realizzate.
+- **PE**: Contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto. (Usata solo dai capoprogetti, ossia i docenti)
+- La root del sito deve contenere le seguenti cartelle:
+  - **lib**: File PHP di libreria (es. globals.php, db.php)
+  - **css**: File CSS
+  - **js**: File JavaScript
+  - **img**: File immagini
+  - **api**: Web services per programmazione via AJAX
 
-#### Pagine dinamiche in PHP: considerazioni generali
-**1** L'header di ogni pagina sarà prodotta da un solo gruppo (già assegnato) che si preoccuperà di ottenere un header per la versione desktop ed un header (con burger menu) per la versione mobile. Appena pronta saranno forniti i seguenti file : 
-  *) header.php da includere al posto del div class=header che ora avete nei vostri file
-  *) header_mobile.css. header_desktop.css e function_header.js da includere nella sezione <head> della propria pagina
+## Pagine Dinamiche in PHP: Considerazioni Generali
 
+1. **Header Unificato**: L'header di ogni pagina sarà prodotto da un solo gruppo (già assegnato) e includerà un header per la versione desktop e un header (con burger menu) per la versione mobile. I file forniti saranno:
 
-**2** Ogni pagina prodotta di qualsiasi funzionalità dovrà testare l'esistenza della sessione, senza la quale si deve redirezionare a login.php con codice del tipo
-<?php
-   session_start();
-   if (!isset($_SESSION['ruolo']))
-       header("Location:login.php");
-   else   {
-   ?>
-   <!-- codice html +php della pagina web da produrre -->
-   <?php
-   }
-   ?>
+   - `header.php` da includere al posto del div `class="header"` attualmente presente nei file.
+   - `header_mobile.css`, `header_desktop.css` e `function_header.js` da includere nella sezione `<head>` della propria pagina.
 
+2. **Verifica della Sessione**: Ogni pagina prodotta deve verificare l'esistenza della sessione. Senza sessione, l'utente deve essere reindirizzato a `login.php` con codice simile al seguente:
 
+   ```php
+   <?php
+   session_start();
+   if (!isset($_SESSION['ruolo'])) {
+       header("Location: login.php");
+   } else {
+   ?>
+   <!-- Codice HTML + PHP della pagina web da produrre -->
+   <?php
+   }
+   ?>
+   ```
 
 ## File Principali
 
 I seguenti file PHP di libreria si trovano nella cartella `lib`:
 
 - **globals.php**: Contiene variabili globali, come i dati necessari per accedere al server DBMS corretto, e procedure di utilità varia.
-  
 - **db.php**: Contiene la classe `DB` che permette di accedere al database e realizzare query di qualsiasi tipo, restituendo i risultati utilizzabili nelle pagine web.
 
 ## Configurazione del Database
 
 Il file `db.php` contiene la classe `DB` che esegue tutte le operazioni sul database utilizzando la classe PDO. È possibile creare funzioni che, al loro interno, creino un oggetto della classe `DB`, impostino la query, utilizzino i metodi della classe e restituiscano i dati all'ambiente chiamante così come sono stati restituiti dall'oggetto `DB`.
 
-#### Esempio di Funzione che Utilizza la Classe DB
+### Esempio di Funzione che Utilizza la Classe DB
 
 ```php
 function example($parametri) {
     // Creazione dell'oggetto DB
     $db = new \lib\DB();
-    
+
     // Impostazione della query
     $query = "SELECT * FROM tabella WHERE colonna = :parametro";
-    
+
     // Esecuzione della query
     $risultati = $db->query($query, [[':parametro', $parametri]]);
-    
+
     // Restituzione dei risultati
     return $risultati;
 }
