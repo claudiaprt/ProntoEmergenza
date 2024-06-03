@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Sonic";
-  src: url("../fonts/sonic.ttf");
+  src: url("../../../fonts/sonic.ttf");
 }
 @font-face {
   font-family: "Cairo";
-  src: url("../fonts/cairo.ttf");
+  src: url("../../../fonts/cairo.ttf");
 }
 * {
   -webkit-user-select: none;
@@ -280,4 +280,4 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}/*# sourceMappingURL=index_computer.css.map */
+}/*# sourceMappingURL=index.css.map */

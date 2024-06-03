@@ -1,0 +1,279 @@
+@font-face {
+  font-family: "Sonic";
+  src: url("../../../fonts/sonic.ttf");
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("../../../fonts/cairo.ttf");
+}
+* {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: default;
+  font-family: "Cairo", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100%;
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+#calendar {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  gap: 1rem;
+}
+
+#calendar-wrapper {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  border-radius: 5px;
+  background: linear-gradient(to bottom right, transparent, #262b5b);
+  gap: 0.5rem;
+}
+#calendar-wrapper #calendar-header {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 0 1rem;
+  gap: 0.5rem;
+}
+#calendar-wrapper #calendar-header > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#calendar-wrapper #calendar-header > * {
+  padding: 0 0.25rem;
+}
+#calendar-wrapper #calendar-controls {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  padding: 0 1rem;
+  gap: 0.5rem;
+}
+#calendar-wrapper #calendar-controls > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#calendar-wrapper #calendar-controls > #prev-month,
+#calendar-wrapper #calendar-controls #next-month {
+  height: 50%;
+  margin: auto 0;
+  border-radius: 2.5px;
+}
+#calendar-wrapper #calendar-controls > #prev-month:hover,
+#calendar-wrapper #calendar-controls #next-month:hover {
+  background-color: rgba(128, 128, 128, 0.25);
+}
+#calendar-wrapper #calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+#calendar-wrapper #calendar-grid .day {
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0.05rem;
+  height: auto;
+}
+#calendar-wrapper #calendar-grid .day:hover:not(.enabled) {
+  background-color: rgba(128, 128, 128, 0.25);
+}
+#calendar-wrapper #calendar-grid .day.disabled {
+  opacity: 0.5;
+}
+#calendar-wrapper #calendar-grid .day.disabled > span {
+  display: none;
+}
+#calendar-wrapper #calendar-grid .day.enabled {
+  background-color: rgba(128, 128, 128, 0.75);
+}
+#calendar-wrapper #calendar-grid .day.enabled:hover {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+#calendar-wrapper #calendar-grid .red-dot,
+#calendar-wrapper #calendar-grid .orange-dot,
+#calendar-wrapper #calendar-grid .green-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+#calendar-wrapper #calendar-grid .red-dot {
+  background-color: red;
+}
+#calendar-wrapper #calendar-grid .orange-dot {
+  background-color: orange;
+}
+#calendar-wrapper #calendar-grid .green-dot {
+  background-color: green;
+}
+
+#current-month-header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  border: 1px solid black;
+  border-radius: 5px 5px 0 0;
+}
+#current-month-header #current-month-display {
+  padding: 0 1%;
+}
+#current-month-header #current-month-display p {
+  text-transform: uppercase;
+}
+#current-month-header #calendar-options,
+#current-month-header #settings-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#current-month-header #calendar-options:hover,
+#current-month-header #settings-options:hover {
+  background-color: rgba(128, 128, 128, 0.25);
+}
+
+#schedule {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  border-top: none;
+}
+#schedule #schedule-header {
+  display: grid;
+  padding: 0.5rem;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-color: black;
+  grid-template-columns: 1fr auto auto;
+  border-radius: 5px 5px 0 0;
+  background-color: #262b5b;
+}
+#schedule #schedule-header > p {
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+#schedule #schedule-header > * {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 0.25rem;
+  padding: 0.5rem;
+}
+#schedule #schedule-header > *:not(:first-child) {
+  justify-content: center;
+}
+#schedule #schedule-header > *:hover:not(:first-child) {
+  background-color: rgba(128, 128, 128, 0.25);
+}
+#schedule #schedule-header #schedule-date {
+  text-transform: uppercase;
+}
+#schedule #schedule-details {
+  border-radius: 0 0 5px 5px;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 1fr 3fr 3fr 3fr;
+}
+#schedule #schedule-details > div {
+  border: 1px solid black;
+  position: relative;
+}
+#schedule #schedule-details > div:nth-child(n+5) {
+  border-top: none;
+}
+#schedule #schedule-details > div:nth-child(n):not(:nth-child(4n)) {
+  border-right: none;
+}
+#schedule #schedule-details .notes {
+  position: absolute;
+  bottom: 0.05rem;
+  right: 0.25rem;
+}
+#schedule #schedule-details .role,
+#schedule #schedule-details .shift,
+#schedule #schedule-details .shift-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#schedule #schedule-details .last-shift {
+  border-radius: 0 0 0 5px;
+}
+#schedule #schedule-details .shift-detail {
+  flex-direction: column;
+}
+#schedule #schedule-details .shift-detail:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+textarea {
+  margin: 0.5rem 0;
+  resize: none;
+  text-align: center;
+  width: 80%;
+}
+textarea:focus {
+  outline: none;
+}
+textarea:focus::-moz-placeholder {
+  color: transparent;
+}
+textarea:focus::placeholder {
+  color: transparent;
+}
+
+#notes-header {
+  margin: 0;
+  padding: 0;
+}
+
+textarea,
+input {
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#notes-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#notes-wrapper {
+  padding: 0.5rem 0;
+  background: linear-gradient(to bottom right, transparent, #ef7f1b);
+  width: 100%;
+  height: 95%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=index.css.map */

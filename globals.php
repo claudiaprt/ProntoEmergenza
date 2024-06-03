@@ -12,7 +12,7 @@
         }
 
         public static function getRootDir(): string{
-            return realpath($_SERVER["DOCUMENT_ROOT"]) . "\\PranziOnLine\\";
+            return realpath($_SERVER["DOCUMENT_ROOT"]);
         }
 
         public static function parse_request_url(string $request_uri, string $request_method): array{

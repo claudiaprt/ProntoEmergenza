@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `pronto_emergenza`
 --
-DROP DATABASE IF EXISTS `pronto_emergenza`;
+--DROP DATABASE IF EXISTS `pronto_emergenza`;
 CREATE DATABASE IF NOT EXISTS `pronto_emergenza` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `pronto_emergenza`;
 
