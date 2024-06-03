@@ -2,19 +2,24 @@
     //create a class to contain all the global variables
     namespace lib;
     class Globals{
-        public static string $db = "ogo_pranzionline_v2";
+        public static string $db = "pronto_emergenz";
         public static string $username = "root";
         public static string $password = "";
         public static string $host = "localhost";
+        public static string $fileLog="..\\logOperazioniFalliteDB.log";
         
         public static function getDSN(): string{
             return "mysql:host=" . Globals::$host . ";dbname=" . Globals::$db;//charset=utf8_general_ci";
         }
 
         public static function getRootDir(): string{
-            return realpath($_SERVER["DOCUMENT_ROOT"]);
+            return realpath($_SERVER["DOCUMENT_ROOT"]) . "\\Pagina_dinamica_login\\lib\\";
         }
-
+        public static function errorLog($message){
+            $flog=fopen(Globals::$fileLog,"a");
+            fwrite($flog,date("j-m-y;h-i-s").";".$message.";\n");
+            fclose($flog);
+        }
         public static function parse_request_url(string $request_uri, string $request_method): array{
             $parsed_url = parse_url($request_uri);
             $path = $parsed_url["path"];

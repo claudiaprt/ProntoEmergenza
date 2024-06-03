@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `pronto_emergenza`
 --
---DROP DATABASE IF EXISTS `pronto_emergenza`;
+/*DROP DATABASE IF EXISTS `pronto_emergenza`;*/
 CREATE DATABASE IF NOT EXISTS `pronto_emergenza` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `pronto_emergenza`;
 
@@ -508,13 +508,15 @@ CREATE TABLE IF NOT EXISTS `utenti` (
   `password` varchar(30) NOT NULL COMMENT 'Password ell''utente',
   `email` varchar(30) NOT NULL COMMENT 'E-mail dell''utente',
   `telefono` varchar(13) NOT NULL COMMENT 'Telefono dell''utente',
+  `immagine` varchar(50) NOT NULL COMMENT 'immagine di profilo dell''utente',
   `indisponibilita` tinyint(1) NOT NULL COMMENT 'flag che permette di conoscere se l’utente è disponibile o meno per i turni ',
   `istruttore` tinyint(1) NOT NULL COMMENT 'flag per conoscere se l’utente è o meno un istruttore',
   `status` enum('volontario','dipendente','corsista') NOT NULL COMMENT 'Tipo utente',
   `tipoUtente` enum('admin','user') NOT NULL,
   PRIMARY KEY (`idUtente`) USING BTREE,
-  UNIQUE KEY `nome` (`nome`),
   UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `codiceFiscale` (`codiceFiscale`)
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --

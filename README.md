@@ -24,7 +24,7 @@ Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". D
 1. **Header Unificato**: L'header di ogni pagina sarà prodotto da un solo gruppo (già assegnato) e includerà un header per la versione desktop e un header (con burger menu) per la versione mobile. I file forniti saranno:
 
    - `header.php` da includere al posto del div `class="header"` attualmente presente nei file.
-   - `header_mobile.css`, `header_desktop.css` e `function_header.js` da includere nella sezione `<head>` della propria pagina.
+   - `styleMheader.css.css`, `styleDheader.css.css` e `scriptHeader.js` da includere nella sezione `<head>` della propria pagina.
 
 2. **Verifica della Sessione**: Ogni pagina prodotta deve verificare l'esistenza della sessione. Senza sessione, l'utente deve essere reindirizzato a `login.php` con codice simile al seguente:
 
@@ -45,8 +45,9 @@ Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". D
 
 I seguenti file PHP di libreria si trovano nella cartella `lib`:
 
-- **globals.php**: Contiene variabili globali, come i dati necessari per accedere al server DBMS corretto, e procedure di utilità varia.
+- **globals.php**: Contiene variabili globali, come i dati necessari per accedere al server DBMS corretto, e procedure di utilità varia. Tra queste IMPORTANTE la funzione errorLOG con cui scrivere su file di log gli errori che avvengono per accesso al DB
 - **db.php**: Contiene la classe `DB` che permette di accedere al database e realizzare query di qualsiasi tipo, restituendo i risultati utilizzabili nelle pagine web.
+  
 
 ## Configurazione del Database
 

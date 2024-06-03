@@ -1,68 +1,32 @@
-.profilo{
+/* General styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", Helvetica, sans-serif;
+}
+
+.header {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width:100%;
-}
-
-/* immagini */
-.immagini {
-  position: absolute;
-  width: 501px;
-  height: 519px;
-  top: 228px;
-  left: 58px;
-}
-
-.triangolo-arancione {
-  position: absolute;
-  width: 439px;
-  height: 494px;
-  top: 0;
-  left: 0;
-}
-
-.triangolo-blu {
-  position: absolute;
-  width: 482px;
-  height: 475px;
-  top: 44px;
-  left: 11px;
-}
-
-.ellipse {
-  position: absolute;
-  width: 438px;
-  height: 438px;
-  top: 26px;
-  left: 63px;
-  object-fit: cover;
-}
-
-/* logo */
-.logo {
-  position: absolute;
-  width: 165px;
-  height: 77px;
-  top: 36px;
-  left: 67px;
-  object-fit: cover;
-}
-
-/* collegamenti */
-.contatti {
-  left: 1132px;
-  display: inline-flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
   padding: 10px;
-  position: absolute;
-  top: 51px;
 }
 
-.link {
-  position: relative;
+.logo {
+  width: 165px;
+  height: auto;
+}
+
+.titolo-profilo .link {
+  font-weight: bold;
+}
+
+#link {
+  display: flex;
+  gap: 30px;
+}
+
+.link a{
   width: fit-content;
   margin-top: -1px;
   font-family: "Montserrat", Helvetica;
@@ -75,65 +39,56 @@
   white-space: nowrap;
 }
 
-.bacheca {
-  left: 959px;
-  display: inline-flex;
+.profilo {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: absolute;
-  top: 51px;
+  width: 100%;
 }
 
-.calendario {
-  left: 764px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: absolute;
-  top: 51px;
+.immagini {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin-bottom: 20px;
 }
 
-.inutile {
-  left: 613px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: absolute;
-  top: 51px;
+.immagini .triangolo-arancione {
+  width: 439px;
+  height: 494px;
+  top: 0;
+  left: 0;
 }
 
-/* logout */
-.logout {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: absolute;
-  top: 51px;
-  left: 1288px;
+.immagini .triangolo-blu {
+  width: 482px;
+  height: 475px;
+  top: 44px;
+  left: 11px;
 }
 
-/* dati anagrafica */
-.dati-profilo {
+.immagini img {
   position: absolute;
-  width: 441px;
-  height: 344px;
-  top: 342px;
-  left: 894px;
+  width: 100%;
+  height: auto;
+  top: 26px;
+  left: 63px;
 }
 
-.ruolo {
-  position: absolute;
+.immagini .imgProf {
+  z-index: 1;
+  border-radius: 50%;
+  width: 438px;
+  height: 438px;
+}
+
+.nome-ruolo {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.nome-ruolo .ruolo {
   width: 230px;
-  top: 803px;
-  left: 232px;
   font-family: "Montserrat", Helvetica;
   font-weight: 400;
   color: var(--grigio-pulsante);
@@ -143,10 +98,7 @@
   line-height: normal;
 }
 
-.anag {
-  position: absolute;
-  top: 774px;
-  left: 282px;
+.nome-ruolo .anag {
   font-family: "Montserrat", Helvetica;
   font-weight: 500;
   color: var(--blu-testi-bottoni);
@@ -157,192 +109,96 @@
   white-space: nowrap;
 }
 
-.numero {
-  position: absolute;
-  width: 143px;
-  top: 0;
-  left: 129px;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 400;
-  color: var(--grigio-pulsante);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
+.dati-profilo {
+  display: flex;
+  flex-direction: row; /* Change from column to row */
+  align-items: flex-start;  
+  margin-bottom: 20px;
 }
 
-.txtnumero {
-  position: absolute;
-  width: 109px;
-  top: 0;
-  left: 0;
+.dati-profilo .txt {
   font-family: "Montserrat", Helvetica;
   font-weight: 500;
   color: var(--blu-testi-bottoni);
   font-size: 20px;
   letter-spacing: 0;
   line-height: normal;
+  margin-right: 40px; /* Add some space between txt and dati */
 }
 
-.txtemail {
-  position: absolute;
-  width: 72px;
-  top: 80px;
-  left: 0;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 500;
-  color: var(--blu-testi-bottoni);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.txtanni {
-  position: absolute;
-  width: 72px;
-  top: 160px;
-  left: 0;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 500;
-  color: var(--blu-testi-bottoni);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.txtindirizzo {
-  position: absolute;
-  width: 104px;
-  top: 240px;
-  left: 0;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 500;
-  color: var(--blu-testi-bottoni);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.txtqual {
-  position: absolute;
-  width: 104px;
-  top: 320px;
-  left: 0;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 500;
-  color: var(--blu-testi-bottoni);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.eta {
-  position: absolute;
-  width: 105px;
-  top: 158px;
-  left: 129px;
+.dati-profilo .dati {
   font-family: "Montserrat", Helvetica;
   font-weight: 400;
   color: var(--grigio-pulsante);
   font-size: 20px;
   letter-spacing: 0;
   line-height: normal;
-}
+} 
 
-.p {
-  position: absolute;
-  width: 292px;
-  top: 240px;
-  left: 129px;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 400;
-  color: var(--grigio-pulsante);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.qual {
-  position: absolute;
-  width: 224px;
-  top: 320px;
-  left: 129px;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 400;
-  color: var(--grigio-pulsante);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.email {
-  position: absolute;
-  width: 259px;
-  top: 80px;
-  left: 129px;
-  font-family: "Montserrat", Helvetica;
-  font-weight: 400;
-  color: var(--grigio-pulsante);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
+p{
+  margin: 30px 0;
 }
 
 .linea-di-mezzo {
-  position: absolute;
   width: 6px;
   height: 484px;
-  top: 278px;
-  left: 720px;
+  background-color: #262b5b;
+  margin: 20px 0;
 }
 
 .bottone-modifica {
   display: flex;
-  width: 250px;
-  height: 44px;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: absolute;
-  top: 806px;
-  left: 965px;
+  width: 150px;
+  height: 44px;
   background-color: #262b5b;
   border-radius: 28px;
+  color: white;
+  font-size: 16px;
 }
 
-.modifica {
-  position: relative;
-  width: fit-content;
-  font-family: var(--sotto-testi-font-family);
-  font-weight: var(--sotto-testi-font-weight);
-  color: #ffffff;
-  font-size: var(--sotto-testi-font-size);
-  letter-spacing: var(--sotto-testi-letter-spacing);
-  line-height: var(--sotto-testi-line-height);
-  font-style: var(--sotto-testi-font-style);
-}
-
-a {
+.bottone-modifica a{
   text-decoration: none;
-  color: black;
+  color: white;
+  width: 150px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.vector {
+/* Flexbox layout adjustments */
+.profilo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Adjust to center vertically */
+}
+
+.main-content {
+  display: flex;
+  gap: 50px; /* Space between image section and profile details */
+  align-items: center;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titolo-profilo .link{
   display: none;
 }
 
-.titolo-profilo {
-  display: none;
-}
-
-  .freccia-dx{
-    display: none;
-  }
-
-  .burger-menu {
-    display:none
-}
-
-#menu-mobile-box {
+.freccia-dx{
   display: none;
 }
