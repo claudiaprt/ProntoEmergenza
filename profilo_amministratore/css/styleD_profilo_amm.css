@@ -1,0 +1,81 @@
+/*DESKTOP*/
+
+.Mobile_Header{
+	display:none;
+}
+
+.burger-menu {
+    display:none;
+}
+
+.menu-mobile{
+	display:none;
+}
+
+.header{
+	display:block;
+
+	position:relative;
+	width:1370.64px;
+	height:100px;
+	left:10%;
+	top:5px;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.pulsanti{
+	position:relative;
+	display:inline-block;
+	font-size:20px;
+	text-align:right;
+	left:41%;
+	margin:1%;
+	bottom:26%;
+	font-family: "Montserrat", Helvetica;
+	color: black;
+}
+
+.immagine-logo{
+	width:200px;
+	height:90px;
+}
+
+.slider{
+	width:1028px;
+	height:500px;
+	top:20px;
+	margin-left:20%;
+	position:relative;
+	padding:15px;
+	display: flex;
+	align-content: space-around;
+	align-items: flex-end;
+	flex-wrap: wrap;
+}
+
+.profile{
+	width:14.6% !important;
+	height:160px;
+	justify-content:center;
+	margin:1% !important;
+	left:1%;
+	display:inline-block !important;
+}
+
+.nome {
+	position:relative;
+	text-align:center;
+	font-size:16px;
+	margin:5px;
+	font-family: "Montserrat", Helvetica;
+}
+
+.image {
+	position:relative;
+	left:5%;
+	top:3%;
+	width:120px;
+	height:120px;
+	border-radius:50%;
+}
