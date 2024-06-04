@@ -1,78 +1,72 @@
 # Pronto Emergenza
 
-Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". Di seguito è fornita una descrizione delle principali cartelle e dei file degni di nota presenti nel progetto.
+Questo repository contiene il codice sorgente del progetto "Pronto Emergenza". Di seguito una descrizione delle principali cartelle e dei file più importanti presenti nel progetto.
 
-## Breakpoint per Responsività
+## Breakpoint per responsività
 
 - **DESKTOP**: `min-width: 701px`
 - **MOBILE**: `max-width: 700px`
 
-## Struttura delle Cartelle
+## Cartelle principali
 
-- **Pagine_Statiche_xxxxxxx**: Contiene le pagine web statiche. Il suffisso `xxxxxx` indica la funzione specifica svolta dal gruppo di lavoro responsabile della cartella.
-- **Pagine_Dinamiche_xxxxxx**: Contiene il backup delle pagine dinamiche realizzate.
-- **PE**: Contiene le pagine web funzionanti del progetto PHP complessivo. Sarà costantemente aggiornata con le ultime versioni delle pagine del progetto. (Usata solo dai capoprogetti, ossia i docenti)
-- La root del sito deve contenere le seguenti cartelle:
-  - **lib**: File PHP di libreria (es. globals.php, db.php)
-  - **css**: File CSS
-  - **js**: File JavaScript
-  - **img**: File immagini
-  - **api**: Web services per programmazione via AJAX
+- **Pagina_Statica_xxxxxxx**: Pagine web statiche. `xxxxxx` indica la funzione specifica del gruppo responsabile.
+- **Pagina_Dinamica_xxxxxx**: Backup delle pagine dinamiche realizzate.
+- **PE**: Pagine web funzionanti del progetto PHP, aggiornate costantemente. (Usata solo dai capoprogetti/docenti)
 
-## Pagine Dinamiche in PHP: Considerazioni Generali
+## Struttura delle cartelle
 
-1. **Header Unificato**: L'header di ogni pagina sarà prodotto da un solo gruppo (già assegnato) e includerà un header per la versione desktop e un header (con burger menu) per la versione mobile. I file forniti saranno:
+Ogni cartella principale contiene le seguenti sottocartelle:
 
-   - `header.php` da includere al posto del div `class="header"` attualmente presente nei file.
-   - `styleMheader.css.css`, `styleDheader.css.css` e `scriptHeader.js` da includere nella sezione `<head>` della propria pagina.
+- **lib**: File PHP di libreria (es. globals.php, db.php).
+- **css**: File CSS.
+- **js**: File JavaScript.
+- **img**: Immagini.
+- **api**: Web services per programmazione via AJAX.
 
-2. **Verifica della Sessione**: Ogni pagina prodotta deve verificare l'esistenza della sessione. Senza sessione, l'utente deve essere reindirizzato a `login.php` con codice simile al seguente:
+## Considerazioni generali sulle pagine dinamiche in PHP
+
+1. **Header unificato**: Prodotto da un solo gruppo, includendo header per desktop e mobile (con burger menu). I file forniti sono:
+
+   - `header.php` da includere al posto del div `class="header"`.
+   - `styleMheader.css`, `styleDheader.css`, `scriptHeader.js` da includere nella sezione `<head>`.
+
+2. **Verifica della sessione**: Ogni pagina deve verificare l'esistenza della sessione e, in caso negativo, reindirizzare a `login.php`:
 
    ```php
    <?php
    session_start();
-   if (!isset($_SESSION['ruolo'])) {
+   if (!isset($_SESSION['role'])) {
        header("Location: login.php");
    } else {
    ?>
-   <!-- Codice HTML + PHP della pagina web da produrre -->
+   <!-- Page contents -->
    <?php
    }
    ?>
    ```
 
-## File Principali
+## File principali
 
-I seguenti file PHP di libreria si trovano nella cartella `lib`:
+Nella cartella `lib` si trovano i seguenti file PHP di libreria:
 
-- **globals.php**: Contiene variabili globali, come i dati necessari per accedere al server DBMS corretto, e procedure di utilità varia. Tra queste IMPORTANTE la funzione errorLOG con cui scrivere su file di log gli errori che avvengono per accesso al DB
-- **db.php**: Contiene la classe `DB` che permette di accedere al database e realizzare query di qualsiasi tipo, restituendo i risultati utilizzabili nelle pagine web.
-  
+- **globals.php**: Contiene variabili globali, dati per accedere al DBMS e la funzione `errorLog()` per registrare errori.
+- **db.php**: Contiene la classe `DB` per accedere al database e realizzare query.
 
-## Configurazione del Database
+## Configurazione del database
 
-Il file `db.php` contiene la classe `DB` che esegue tutte le operazioni sul database utilizzando la classe PDO. È possibile creare funzioni che, al loro interno, creino un oggetto della classe `DB`, impostino la query, utilizzino i metodi della classe e restituiscano i dati all'ambiente chiamante così come sono stati restituiti dall'oggetto `DB`.
+Il file `db.php` contiene la classe `DB` che utilizza la classe PDO per operazioni sul database. È possibile creare funzioni che utilizzano un oggetto della classe `DB` per eseguire query e restituire i risultati.
 
-### Esempio di Funzione che Utilizza la Classe DB
+### Esempio di funzione che utilizza la classe DB
 
 ```php
-function example($parametri) {
-    // Creazione dell'oggetto DB
+function get_query($parameters) {
     $db = new \lib\DB();
-
-    // Impostazione della query
-    $query = "SELECT * FROM tabella WHERE colonna = :parametro";
-
-    // Esecuzione della query
-    $risultati = $db->query($query, [[':parametro', $parametri]]);
-
-    // Restituzione dei risultati
-    return $risultati;
+    $query = "SELECT * FROM table WHERE column = :parameter";
+    $results = $db->query($query, [[':parameter', $parameters]]);
+    return $results;
 }
 ```
 
-In questo esempio, la funzione `example()` crea un oggetto `DB`, imposta ed esegue una query, e restituisce i risultati ottenuti dalla query.
-
 ---
 
-Per ulteriori informazioni o domande, non esitare a contattare i responsabili.
+Per ulteriori informazioni o domande, contatta i responsabili.
