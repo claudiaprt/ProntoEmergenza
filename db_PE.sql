@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 30, 2024 alle 10:17
+-- Creato il: Giu 05, 2024 alle 13:28
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.2.0
 
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pronto_emergenza`
 --
-/*DROP DATABASE IF EXISTS `pronto_emergenza`;*/
 CREATE DATABASE IF NOT EXISTS `pronto_emergenza` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `pronto_emergenza`;
 
@@ -30,17 +29,14 @@ USE `pronto_emergenza`;
 -- Struttura della tabella `assistenze`
 --
 
-DROP TABLE IF EXISTS `assistenze`;
-CREATE TABLE IF NOT EXISTS `assistenze` (
-  `idAssistenza` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `assistenze` (
+  `idAssistenza` int(11) NOT NULL,
   `data` date NOT NULL COMMENT 'Data in cui l’assistenza è stata fornita',
   `oraInizio` time NOT NULL COMMENT 'L''ora esatta in cui è iniziata l’assistenza',
   `oraFine` time NOT NULL COMMENT 'L’ora esatta in cui l’assistenza è terminata',
   `luogo` varchar(255) NOT NULL COMMENT 'La locazione geografica o la descrizione del luogo in cui si dovrà fornire l’assistenza',
-  `idMezzo` int(11) NOT NULL,
-  PRIMARY KEY (`idAssistenza`),
-  KEY `idMezzo` (`idMezzo`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idMezzo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `assistenze`
@@ -64,21 +60,16 @@ INSERT INTO `assistenze` (`idAssistenza`, `data`, `oraInizio`, `oraFine`, `luogo
 -- Struttura della tabella `comunicazioni`
 --
 
-DROP TABLE IF EXISTS `comunicazioni`;
-CREATE TABLE IF NOT EXISTS `comunicazioni` (
-  `idComunicazione` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID della comunicazione, utilizzato come chiave primaria e auto-incrementato per garantire univocità automatica',
+CREATE TABLE `comunicazioni` (
+  `idComunicazione` int(11) NOT NULL COMMENT 'ID della comunicazione, utilizzato come chiave primaria e auto-incrementato per garantire univocità automatica',
   `dataEmissione` date NOT NULL COMMENT 'data di invio comunicazione ',
   `titolo` varchar(15) NOT NULL COMMENT 'titolo identificatore univoco ',
   `testo` text NOT NULL COMMENT 'contenuto della comunicazione ',
   `nomeFileAllegato` varchar(50) DEFAULT NULL COMMENT 'nome del percorso del file da allegare alla comunicazione ',
   `dataScadenza` date NOT NULL COMMENT 'data di scadenza della comunicazione ',
   `idTipo` int(11) NOT NULL COMMENT 'nome identificatore del tipo di comunicazione ',
-  `idUtente` int(11) NOT NULL COMMENT 'ID dell''utente associato alla comunicazione',
-  PRIMARY KEY (`idComunicazione`),
-  UNIQUE KEY `titolo` (`titolo`),
-  KEY `comunicazioni_ibfk_1` (`idTipo`),
-  KEY `comunicazioni_ibfk_2` (`idUtente`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idUtente` int(11) NOT NULL COMMENT 'ID dell''utente associato alla comunicazione'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `comunicazioni`
@@ -102,18 +93,15 @@ INSERT INTO `comunicazioni` (`idComunicazione`, `dataEmissione`, `titolo`, `test
 -- Struttura della tabella `documenti`
 --
 
-DROP TABLE IF EXISTS `documenti`;
-CREATE TABLE IF NOT EXISTS `documenti` (
-  `idDocumento` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `documenti` (
+  `idDocumento` int(11) NOT NULL,
   `descrizione` varchar(120) NOT NULL COMMENT 'identificativo del certificato ',
   `fronte` varchar(30) NOT NULL COMMENT 'foto del fronte del documento ',
   `retro` varchar(30) DEFAULT NULL COMMENT 'foto del retro del documento ',
   `dataEmissione` date NOT NULL COMMENT 'data di emissione del documento ',
   `dataScadenza` date NOT NULL COMMENT 'data di scadenza del documento ',
-  `idUtente` int(11) NOT NULL,
-  PRIMARY KEY (`idDocumento`),
-  KEY `idUtente` (`idUtente`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idUtente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `documenti`
@@ -137,19 +125,16 @@ INSERT INTO `documenti` (`idDocumento`, `descrizione`, `fronte`, `retro`, `dataE
 -- Struttura della tabella `eventiprogrammati`
 --
 
-DROP TABLE IF EXISTS `eventiprogrammati`;
-CREATE TABLE IF NOT EXISTS `eventiprogrammati` (
-  `idEventoProgrammato` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `eventiprogrammati` (
+  `idEventoProgrammato` int(11) NOT NULL,
   `data` date NOT NULL COMMENT 'data dell''evento',
   `oraInizio` time NOT NULL COMMENT 'ora inizio del trasporto',
   `oraFine` time NOT NULL COMMENT 'ora fine del trasporto',
   `luogo` varchar(50) NOT NULL COMMENT 'luogo di destinazione',
   `nomeRichiedente` varchar(20) NOT NULL COMMENT 'nome della persona da assistere',
   `cognomeRichiedente` varchar(20) NOT NULL COMMENT 'cognome della persona da assistere',
-  `idMezzo` int(11) NOT NULL,
-  PRIMARY KEY (`idEventoProgrammato`),
-  KEY `idMezzo` (`idMezzo`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idMezzo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `eventiprogrammati`
@@ -173,13 +158,11 @@ INSERT INTO `eventiprogrammati` (`idEventoProgrammato`, `data`, `oraInizio`, `or
 -- Struttura della tabella `festivita`
 --
 
-DROP TABLE IF EXISTS `festivita`;
-CREATE TABLE IF NOT EXISTS `festivita` (
-  `idFestivita` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `festivita` (
+  `idFestivita` int(11) NOT NULL,
   `descrizione` text NOT NULL COMMENT 'descrizione festivita',
-  `data` date NOT NULL COMMENT 'data festivita',
-  PRIMARY KEY (`idFestivita`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `data` date NOT NULL COMMENT 'data festivita'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `festivita`
@@ -204,9 +187,8 @@ INSERT INTO `festivita` (`idFestivita`, `descrizione`, `data`) VALUES
 -- Struttura della tabella `mezzi`
 --
 
-DROP TABLE IF EXISTS `mezzi`;
-CREATE TABLE IF NOT EXISTS `mezzi` (
-  `idMezzo` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mezzi` (
+  `idMezzo` int(11) NOT NULL,
   `modello` varchar(30) NOT NULL COMMENT 'nome del modello del mezzo',
   `targa` varchar(7) NOT NULL COMMENT 'targa del mezzo',
   `dataImmatricolazione` date NOT NULL COMMENT 'data in cui il mezzo è stato immatricolato',
@@ -214,9 +196,8 @@ CREATE TABLE IF NOT EXISTS `mezzi` (
   `scadAssicurazione` date NOT NULL COMMENT 'scadenza assicurazione',
   `scadRevisione` date NOT NULL COMMENT 'scadenza revisione',
   `scadBollo` date NOT NULL COMMENT 'scadenza bollo',
-  `tipoMezzo` enum('macchina','ambulanza') NOT NULL,
-  PRIMARY KEY (`idMezzo`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `tipoMezzo` enum('macchina','ambulanza') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `mezzi`
@@ -240,14 +221,11 @@ INSERT INTO `mezzi` (`idMezzo`, `modello`, `targa`, `dataImmatricolazione`, `dat
 -- Struttura della tabella `ruoli`
 --
 
-DROP TABLE IF EXISTS `ruoli`;
-CREATE TABLE IF NOT EXISTS `ruoli` (
-  `idRuolo` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ruoli` (
+  `idRuolo` int(11) NOT NULL,
   `nome` enum('autista','corsista','istruttore','soccorritore') NOT NULL COMMENT 'tipo di ruolo svolto da utente ',
-  `descrizione` varchar(120) NOT NULL,
-  PRIMARY KEY (`idRuolo`),
-  UNIQUE KEY `nome` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `descrizione` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `ruoli`
@@ -265,13 +243,10 @@ INSERT INTO `ruoli` (`idRuolo`, `nome`, `descrizione`) VALUES
 -- Struttura della tabella `tipicomunicazione`
 --
 
-DROP TABLE IF EXISTS `tipicomunicazione`;
-CREATE TABLE IF NOT EXISTS `tipicomunicazione` (
-  `idTipo` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(20) NOT NULL COMMENT 'nome identificatore del tipo di comunicazione',
-  PRIMARY KEY (`idTipo`),
-  UNIQUE KEY `nome` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+CREATE TABLE `tipicomunicazione` (
+  `idTipo` int(11) NOT NULL,
+  `nome` varchar(20) NOT NULL COMMENT 'nome identificatore del tipo di comunicazione'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `tipicomunicazione`
@@ -295,19 +270,16 @@ INSERT INTO `tipicomunicazione` (`idTipo`, `nome`) VALUES
 -- Struttura della tabella `turni118`
 --
 
-DROP TABLE IF EXISTS `turni118`;
-CREATE TABLE IF NOT EXISTS `turni118` (
-  `idTurno118` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificativo del turno',
+CREATE TABLE `turni118` (
+  `idTurno118` int(11) NOT NULL COMMENT 'Identificativo del turno',
   `data` date NOT NULL COMMENT 'Data del turno',
   `oraInizio` time NOT NULL COMMENT 'Ora inizio turno',
   `oraFine` time NOT NULL COMMENT 'Ora fine turno',
   `festivo` varchar(2) NOT NULL COMMENT 'Controllo per verificare i festivi',
   `controlloAttrezzatura` tinyint(1) NOT NULL COMMENT 'Flag per controllo presenza attrezzatura',
   `convalidato` tinyint(1) NOT NULL COMMENT 'Flag per convalida turno ',
-  `idMezzo` int(11) NOT NULL COMMENT 'Identificativo del mezzo',
-  PRIMARY KEY (`idTurno118`),
-  KEY `idMezzo` (`idMezzo`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idMezzo` int(11) NOT NULL COMMENT 'Identificativo del mezzo'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `turni118`
@@ -363,9 +335,8 @@ INSERT INTO `turni118` (`idTurno118`, `data`, `oraInizio`, `oraFine`, `festivo`,
 -- Struttura della tabella `turniutenti`
 --
 
-DROP TABLE IF EXISTS `turniutenti`;
-CREATE TABLE IF NOT EXISTS `turniutenti` (
-  `idTurnoUtente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificativo del turno dell''utente',
+CREATE TABLE `turniutenti` (
+  `idTurnoUtente` int(11) NOT NULL COMMENT 'Identificativo del turno dell''utente',
   `testoNota` text DEFAULT NULL COMMENT 'Testo della nota scritta dall''utente',
   `oraInizioEffettiva` time DEFAULT NULL COMMENT 'Ora inizio turno',
   `oraFineEffettiva` time DEFAULT NULL COMMENT 'Ora fine turno',
@@ -374,14 +345,8 @@ CREATE TABLE IF NOT EXISTS `turniutenti` (
   `idEventoProgrammato` int(11) DEFAULT NULL COMMENT 'Identificativo dell''evento programmato',
   `idAssistenza` int(11) DEFAULT NULL COMMENT 'Identificativo dell''assistenza associata',
   `idRuolo` int(11) NOT NULL COMMENT 'Identificativo del ruolo',
-  `idUtente` int(11) NOT NULL COMMENT 'Identificativo dell''utente',
-  PRIMARY KEY (`idTurnoUtente`),
-  KEY `idTurno118` (`idTurno118`),
-  KEY `idEventoProgrammato` (`idEventoProgrammato`),
-  KEY `idAssistenza` (`idAssistenza`),
-  KEY `idRuolo` (`idRuolo`),
-  KEY `idUtente` (`idUtente`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idUtente` int(11) NOT NULL COMMENT 'Identificativo dell''utente'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `turniutenti`
@@ -492,9 +457,8 @@ INSERT INTO `turniutenti` (`idTurnoUtente`, `testoNota`, `oraInizioEffettiva`, `
 -- Struttura della tabella `utenti`
 --
 
-DROP TABLE IF EXISTS `utenti`;
-CREATE TABLE IF NOT EXISTS `utenti` (
-  `idUtente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Chiave primaria utente',
+CREATE TABLE `utenti` (
+  `idUtente` int(11) NOT NULL COMMENT 'Chiave primaria utente',
   `cognome` varchar(30) NOT NULL COMMENT 'Cognome dell''utente',
   `nome` varchar(30) NOT NULL COMMENT 'Nome dell''utente',
   `codiceFiscale` varchar(16) NOT NULL COMMENT 'Codice fiscale dell''utente',
@@ -508,32 +472,28 @@ CREATE TABLE IF NOT EXISTS `utenti` (
   `password` varchar(30) NOT NULL COMMENT 'Password ell''utente',
   `email` varchar(30) NOT NULL COMMENT 'E-mail dell''utente',
   `telefono` varchar(13) NOT NULL COMMENT 'Telefono dell''utente',
-  `immagine` varchar(50) NOT NULL COMMENT 'immagine di profilo dell''utente',
+  `immagine` varchar(50) NOT NULL DEFAULT 'default.png' COMMENT 'Immagine profilo dell''utente',
   `indisponibilita` tinyint(1) NOT NULL COMMENT 'flag che permette di conoscere se l’utente è disponibile o meno per i turni ',
   `istruttore` tinyint(1) NOT NULL COMMENT 'flag per conoscere se l’utente è o meno un istruttore',
   `status` enum('volontario','dipendente','corsista') NOT NULL COMMENT 'Tipo utente',
-  `tipoUtente` enum('admin','user') NOT NULL,
-  PRIMARY KEY (`idUtente`) USING BTREE,
-  UNIQUE KEY `username` (`username`)
-  UNIQUE KEY `codiceFiscale` (`codiceFiscale`)
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `tipoUtente` enum('admin','user') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `utenti`
 --
 
-INSERT INTO `utenti` (`idUtente`, `cognome`, `nome`, `codiceFiscale`, `dataNascita`, `via`, `numero`, `cap`, `citta`, `provincia`, `username`, `password`, `email`, `telefono`, `indisponibilita`, `istruttore`, `status`, `tipoUtente`) VALUES
-(1, 'Rossi', 'Mario', 'RSSMRA80A01H501A', '1980-01-01', 'Via Roma', '10', '00100', 'Roma', 'RM', 'mario.rossi', 'password123', 'mario.rossi@example.com', '0123456789', 0, 0, 'volontario', 'admin'),
-(2, 'Bianchi', 'Laura', 'BNCLLRA80A01H501', '1980-03-15', 'Via Milano', '20', '20100', 'Milano', 'MI', 'laura.bianchi', 'istruttore123', 'laura.bianchi@example.com', '9876543210', 0, 1, 'dipendente', 'user'),
-(3, 'Verdi', 'Giuseppe', 'VRDGPZ80A01H501A', '1980-05-20', 'Via Napoli', '30', '80100', 'Napoli', 'NA', 'admin', 'admin123', 'admin@example.com', '1234567890', 0, 0, 'corsista', 'user'),
-(4, 'Ferrari', 'Anna', 'FRRNNA80A01H501A', '1980-08-10', 'Via Firenze', '40', '50100', 'Firenze', 'FI', 'anna.ferrari', 'annapass', 'anna.ferrari@example.com', '4567890123', 1, 0, 'volontario', 'user'),
-(5, 'Russo', 'Luca', 'RSSLCU80A01H501A', '1980-11-25', 'Via Torino', '50', '10100', 'Torino', 'TO', 'luca.russo', 'luca123', 'luca.russo@example.com', '6789012345', 0, 1, 'dipendente', 'user'),
-(6, 'Galli', 'Paola', 'GLLPLA80A01H501A', '1980-02-14', 'Via Venezia', '60', '30100', 'Venezia', 'VE', 'paola.galli', 'paola456', 'paola.galli@example.com', '8901234567', 0, 1, 'corsista', 'user'),
-(7, 'Moretti', 'Marco', 'MRTMRC80A01H501A', '1980-07-30', 'Via Genova', '70', '16100', 'Genova', 'GE', 'marco.moretti', 'moretti789', 'marco.moretti@example.com', '9012345678', 0, 0, 'volontario', 'user'),
-(8, 'Fabbri', 'Elena', 'FBBELN80A01H501A', '1980-09-18', 'Via Bologna', '80', '40100', 'Bologna', 'BO', 'elena.fabbri', 'fabbri10', 'elena.fabbri@example.com', '0123456789', 0, 0, 'dipendente', 'user'),
-(9, 'Mancini', 'Roberto', 'MCNRRT80A01H501A', '1980-04-05', 'Via Verona', '90', '37100', 'Verona', 'VR', 'roberto.mancini', 'mancini23', 'roberto.mancini@example.com', '1234567890', 0, 0, 'volontario', 'admin'),
-(10, 'Martini', 'Giovanna', 'MRTGVN80A01H501A', '1980-10-12', 'Via Palermo', '100', '90100', 'Palermo', 'PA', 'giovanna.martini', 'martini456', 'giovanna.martini@example.com', '2345678901', 0, 0, 'dipendente', 'user');
+INSERT INTO `utenti` (`idUtente`, `cognome`, `nome`, `codiceFiscale`, `dataNascita`, `via`, `numero`, `cap`, `citta`, `provincia`, `username`, `password`, `email`, `telefono`, `immagine`, `indisponibilita`, `istruttore`, `status`, `tipoUtente`) VALUES
+(1, 'Rossi', 'Mario', 'RSSMRA80A01H501A', '1980-01-01', 'Via Roma', '10', '00100', 'Roma', 'RM', 'mario.rossi', 'password123', 'mario.rossi@example.com', '0123456789', 'default.png', 0, 0, 'volontario', 'admin'),
+(2, 'Bianchi', 'Laura', 'BNCLLRA80A01H501', '1980-03-15', 'Via Milano', '20', '20100', 'Milano', 'MI', 'laura.bianchi', 'istruttore123', 'laura.bianchi@example.com', '9876543210', 'default.png', 0, 1, 'dipendente', 'user'),
+(3, 'Verdi', 'Giuseppe', 'VRDGPZ80A01H501A', '1980-05-20', 'Via Napoli', '30', '80100', 'Napoli', 'NA', 'admin', 'admin123', 'admin@example.com', '1234567890', 'default.png', 0, 0, 'corsista', 'user'),
+(4, 'Ferrari', 'Anna', 'FRRNNA80A01H501A', '1980-08-10', 'Via Firenze', '40', '50100', 'Firenze', 'FI', 'anna.ferrari', 'annapass', 'anna.ferrari@example.com', '4567890123', 'default.png', 1, 0, 'volontario', 'user'),
+(5, 'Russo', 'Luca', 'RSSLCU80A01H501A', '1980-11-25', 'Via Torino', '50', '10100', 'Torino', 'TO', 'luca.russo', 'luca123', 'luca.russo@example.com', '6789012345', 'default.png', 0, 1, 'dipendente', 'user'),
+(6, 'Galli', 'Paola', 'GLLPLA80A01H501A', '1980-02-14', 'Via Venezia', '60', '30100', 'Venezia', 'VE', 'paola.galli', 'paola456', 'paola.galli@example.com', '8901234567', 'default.png', 0, 1, 'corsista', 'user'),
+(7, 'Moretti', 'Marco', 'MRTMRC80A01H501A', '1980-07-30', 'Via Genova', '70', '16100', 'Genova', 'GE', 'marco.moretti', 'moretti789', 'marco.moretti@example.com', '9012345678', 'default.png', 0, 0, 'volontario', 'user'),
+(8, 'Fabbri', 'Elena', 'FBBELN80A01H501A', '1980-09-18', 'Via Bologna', '80', '40100', 'Bologna', 'BO', 'elena.fabbri', 'fabbri10', 'elena.fabbri@example.com', '0123456789', 'default.png', 0, 0, 'dipendente', 'user'),
+(9, 'Mancini', 'Roberto', 'MCNRRT80A01H501A', '1980-04-05', 'Via Verona', '90', '37100', 'Verona', 'VR', 'roberto.mancini', 'mancini23', 'roberto.mancini@example.com', '1234567890', 'default.png', 0, 0, 'volontario', 'admin'),
+(10, 'Martini', 'Giovanna', 'MRTGVN80A01H501A', '1980-10-12', 'Via Palermo', '100', '90100', 'Palermo', 'PA', 'giovanna.martini', 'martini456', 'giovanna.martini@example.com', '2345678901', 'default.png', 0, 0, 'dipendente', 'user');
 
 -- --------------------------------------------------------
 
@@ -541,16 +501,12 @@ INSERT INTO `utenti` (`idUtente`, `cognome`, `nome`, `codiceFiscale`, `dataNasci
 -- Struttura della tabella `utenticomunicazioni`
 --
 
-DROP TABLE IF EXISTS `utenticomunicazioni`;
-CREATE TABLE IF NOT EXISTS `utenticomunicazioni` (
-  `idUtentiComunicazioni` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utenticomunicazioni` (
+  `idUtentiComunicazioni` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
   `idComunicazione` int(11) NOT NULL,
-  `dataLettura` date NOT NULL,
-  PRIMARY KEY (`idUtentiComunicazioni`),
-  KEY `idUtente` (`idUtente`),
-  KEY `idComunicazione` (`idComunicazione`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `dataLettura` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `utenticomunicazioni`
@@ -574,15 +530,11 @@ INSERT INTO `utenticomunicazioni` (`idUtentiComunicazioni`, `idUtente`, `idComun
 -- Struttura della tabella `utentiruoli`
 --
 
-DROP TABLE IF EXISTS `utentiruoli`;
-CREATE TABLE IF NOT EXISTS `utentiruoli` (
-  `idUtentiRuoli` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utentiruoli` (
+  `idUtentiRuoli` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL,
-  `idRuolo` int(11) NOT NULL,
-  PRIMARY KEY (`idUtentiRuoli`),
-  KEY `idRuolo` (`idRuolo`),
-  KEY `idUtente` (`idUtente`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idRuolo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `utentiruoli`
@@ -599,6 +551,190 @@ INSERT INTO `utentiruoli` (`idUtentiRuoli`, `idUtente`, `idRuolo`) VALUES
 (8, 7, 4),
 (9, 8, 2),
 (10, 9, 4);
+
+--
+-- Indici per le tabelle scaricate
+--
+
+--
+-- Indici per le tabelle `assistenze`
+--
+ALTER TABLE `assistenze`
+  ADD PRIMARY KEY (`idAssistenza`),
+  ADD KEY `idMezzo` (`idMezzo`);
+
+--
+-- Indici per le tabelle `comunicazioni`
+--
+ALTER TABLE `comunicazioni`
+  ADD PRIMARY KEY (`idComunicazione`),
+  ADD UNIQUE KEY `titolo` (`titolo`),
+  ADD KEY `comunicazioni_ibfk_1` (`idTipo`),
+  ADD KEY `comunicazioni_ibfk_2` (`idUtente`);
+
+--
+-- Indici per le tabelle `documenti`
+--
+ALTER TABLE `documenti`
+  ADD PRIMARY KEY (`idDocumento`),
+  ADD KEY `idUtente` (`idUtente`);
+
+--
+-- Indici per le tabelle `eventiprogrammati`
+--
+ALTER TABLE `eventiprogrammati`
+  ADD PRIMARY KEY (`idEventoProgrammato`),
+  ADD KEY `idMezzo` (`idMezzo`);
+
+--
+-- Indici per le tabelle `festivita`
+--
+ALTER TABLE `festivita`
+  ADD PRIMARY KEY (`idFestivita`);
+
+--
+-- Indici per le tabelle `mezzi`
+--
+ALTER TABLE `mezzi`
+  ADD PRIMARY KEY (`idMezzo`);
+
+--
+-- Indici per le tabelle `ruoli`
+--
+ALTER TABLE `ruoli`
+  ADD PRIMARY KEY (`idRuolo`),
+  ADD UNIQUE KEY `nome` (`nome`);
+
+--
+-- Indici per le tabelle `tipicomunicazione`
+--
+ALTER TABLE `tipicomunicazione`
+  ADD PRIMARY KEY (`idTipo`),
+  ADD UNIQUE KEY `nome` (`nome`);
+
+--
+-- Indici per le tabelle `turni118`
+--
+ALTER TABLE `turni118`
+  ADD PRIMARY KEY (`idTurno118`),
+  ADD KEY `idMezzo` (`idMezzo`);
+
+--
+-- Indici per le tabelle `turniutenti`
+--
+ALTER TABLE `turniutenti`
+  ADD PRIMARY KEY (`idTurnoUtente`),
+  ADD KEY `idTurno118` (`idTurno118`),
+  ADD KEY `idEventoProgrammato` (`idEventoProgrammato`),
+  ADD KEY `idAssistenza` (`idAssistenza`),
+  ADD KEY `idRuolo` (`idRuolo`),
+  ADD KEY `idUtente` (`idUtente`);
+
+--
+-- Indici per le tabelle `utenti`
+--
+ALTER TABLE `utenti`
+  ADD PRIMARY KEY (`idUtente`) USING BTREE,
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `codiceFiscale` (`codiceFiscale`);
+
+--
+-- Indici per le tabelle `utenticomunicazioni`
+--
+ALTER TABLE `utenticomunicazioni`
+  ADD PRIMARY KEY (`idUtentiComunicazioni`),
+  ADD KEY `idUtente` (`idUtente`),
+  ADD KEY `idComunicazione` (`idComunicazione`);
+
+--
+-- Indici per le tabelle `utentiruoli`
+--
+ALTER TABLE `utentiruoli`
+  ADD PRIMARY KEY (`idUtentiRuoli`),
+  ADD KEY `idRuolo` (`idRuolo`),
+  ADD KEY `idUtente` (`idUtente`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `assistenze`
+--
+ALTER TABLE `assistenze`
+  MODIFY `idAssistenza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `comunicazioni`
+--
+ALTER TABLE `comunicazioni`
+  MODIFY `idComunicazione` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID della comunicazione, utilizzato come chiave primaria e auto-incrementato per garantire univocità automatica', AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `documenti`
+--
+ALTER TABLE `documenti`
+  MODIFY `idDocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `eventiprogrammati`
+--
+ALTER TABLE `eventiprogrammati`
+  MODIFY `idEventoProgrammato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `festivita`
+--
+ALTER TABLE `festivita`
+  MODIFY `idFestivita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT per la tabella `mezzi`
+--
+ALTER TABLE `mezzi`
+  MODIFY `idMezzo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `ruoli`
+--
+ALTER TABLE `ruoli`
+  MODIFY `idRuolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT per la tabella `tipicomunicazione`
+--
+ALTER TABLE `tipicomunicazione`
+  MODIFY `idTipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT per la tabella `turni118`
+--
+ALTER TABLE `turni118`
+  MODIFY `idTurno118` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificativo del turno', AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT per la tabella `turniutenti`
+--
+ALTER TABLE `turniutenti`
+  MODIFY `idTurnoUtente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificativo del turno dell''utente', AUTO_INCREMENT=98;
+
+--
+-- AUTO_INCREMENT per la tabella `utenti`
+--
+ALTER TABLE `utenti`
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Chiave primaria utente', AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `utenticomunicazioni`
+--
+ALTER TABLE `utenticomunicazioni`
+  MODIFY `idUtentiComunicazioni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `utentiruoli`
+--
+ALTER TABLE `utentiruoli`
+  MODIFY `idUtentiRuoli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Limiti per le tabelle scaricate
