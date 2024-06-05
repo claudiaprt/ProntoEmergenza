@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['role'])) {
+        header("Location: login.php");
+    } else {
+        require('../header.php');
+        //require('../footer.php');
+    ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +33,6 @@
         </div>
     </div> -->
     <?php
-        require('../header.php');
         printHeader();
     ?>
     <div class="profilo">
@@ -69,3 +77,8 @@
     ?>
 </body>
 </html>
+
+<?php
+}
+?>
+?>
