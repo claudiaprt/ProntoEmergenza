@@ -11,7 +11,7 @@
     <script src="./js/funzioni.js"></script>
 </head>
 <body>
-    <div class="header">
+    <!-- <div class="header">
         <img class="logo" src="img/immagine-logo-ambulanza.png" alt="Logo" />
         <div class="freccia-dx"><img src="./img/vector-1.svg" /></div>  
         <div class="titolo-profilo"><div class="link">Profilo</div></div>
@@ -22,8 +22,11 @@
             <div class="link"><a href="profilo.html">Profilo</a></div>
             <div class="link"><a href="logout.html">Log out &gt;</a></div>
         </div>
-    </div>
-
+    </div> -->
+    <?php
+        require('../header.php');
+        printHeader();
+    ?>
     <div class="profilo">
         <div class="main-content">
             <div class="left-content">
@@ -61,5 +64,8 @@
             </div>
         </div>
     </div>
+    <?php
+        //stampa footer
+    ?>
 </body>
 </html>

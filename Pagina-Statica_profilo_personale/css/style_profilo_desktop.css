@@ -5,7 +5,7 @@ body, html {
   font-family: "Montserrat", Helvetica, sans-serif;
 }
 
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,7 @@ body, html {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
-}
+} */
 
 .profilo {
   display: flex;

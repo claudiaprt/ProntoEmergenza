@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 
-.header {
+/* .header {
   display: flex;
   align-items: center;
   padding: 15px;
@@ -25,7 +25,7 @@ body {
   font-size: 18px;
   color: #262b5b;
   cursor: pointer;
-}
+} */
 
 .main-content {
   padding: 20px;

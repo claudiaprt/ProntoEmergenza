@@ -36,7 +36,7 @@
                 </div>
             </div> 
             <style>
-                @media screen and (min-width:800px){
+                @media screen and (min-width:701px){
                     .only-mobile{
                         display:none;
                     }
@@ -70,7 +70,7 @@
                         height:auto;
                     }
                 }
-                @media screen and (max-width:800px){
+                @media screen and (max-width:700px){
 
                     .only-desktop{
                         display:none;
