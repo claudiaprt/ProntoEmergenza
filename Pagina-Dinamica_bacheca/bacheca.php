@@ -1,10 +1,11 @@
 <?php
 require("function.php");
-$x = 0;
-/*if(!isset($_SESSION['idUtente']))
+session_start();
+$_SESSION['idUtente'] = 4;      //per testing (da togliere una volta completo il sito)
+if(!isset($_SESSION['idUtente']))
   header("Location: homepage.php");
-else{*/
-  $bacheca = select("SELECT * from comunicazioni");   //chiedo al database una matrice contenente le comunicazioni
+else{
+  $bacheca = select("SELECT * from (((utenticomunicazioni uc inner join comunicazioni c on c.idComunicazione = uc.idComunicazione) inner join utenti u on u.idUtente = uc.idUtente)inner join tipicomunicazione t on t.idTipo = c.idTipo) where uc.IdUtente = ? and c.dataScadenza >= ?",[$_SESSION['idUtente'],date("Y-m-d")]);   //chiedo al database una matrice contenente le comunicazioni
   if(isset($bacheca['error']))         //verifico che non ci sia errore nella comunicazione col db
     header("Location: index.php");
   else{
@@ -20,6 +21,7 @@ else{*/
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleguide.css">
     <link rel="stylesheet" href="globals.css">
+    <script type="text/javascript" src="script.js"></script>
   </head>
   <body>
     <div class="bacheca">
@@ -42,43 +44,34 @@ else{*/
         <h2 class="only-desktop">Bacheca</h2>
         <div class="search-bar only-desktop">
           <label for="search-bar" class="search-label"><img src="img/frame-29-1.svg" alt="search" class="search-icon"></label>
-          <input type="text" name="search-bar" placeholder="cerca..." class="search-input" id="search-bar">
+          <input type="text" name="search-bar" placeholder="cerca..." class="search-input" id="search-bar" onkeyup="searchbar(this)">
         </div>
         <div class="frame">
             <h3 class="p only-mobile">Nascondi le comunicazioni già lette</h3>  
                 
           <div class="switch-container" title="Mostra/Nascondi Comunicazioni Lette">
-            <input type="checkbox" id="switch">
+          <form method="post" action="">
+            <input name="switch" type="checkbox" id="switch" onclick="read_checkbox(this)">
             <label for="switch" class="switch">
+          </form>
           </div>
   <?php
-        if($x != 0){//if($_SESSION['tipoUtente'] == 'admin'){
+      //if($_SESSION['tipoUtente'] == 'admin'){
   ?>
-          <a href="addbacheca.html">
+          <a href="addComunicazione.php">
             <div class="ellipse">
               <p class="piu">+</p>
             </div>  
           </a>
           <?php
-      }
+      //}
 ?>
         </div> 
       </div>
       <div class="cont">
-        <ul class="button-list">
+        <ul class='button-list' id='ul'>
 <?php
-        for($i=0;$i<count($bacheca)-1;$i++){
-          $arr = $bacheca[$i];
-          echo "<li class='button-item' id='ris'>
-            <button class='styled-button'>
-              <img src='img/mail-bacheca-7.svg' alt='mail'>
-              <div class='info'>
-                <span class='title'>".$arr['titolo']."</span>
-                <span class='date'>".$arr['dataEmissione']."</span>
-              </div>
-            </button>
-          </li>";
-        }
+          stampaBacheca($bacheca);
 ?>
         </ul>
       </div>
@@ -88,5 +81,5 @@ else{*/
 <?php
     }
   }
-//}
+}
 ?>
