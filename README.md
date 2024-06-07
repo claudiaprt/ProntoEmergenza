@@ -20,7 +20,7 @@ Ogni cartella principale contiene le seguenti sottocartelle:
 - **lib**: File PHP di libreria (es. globals.php, db.php).
 - **css**: File CSS. I file css utilizzati DEVONO avere il nome che segue il seguente formato: style_xxxxx_Desktop.csss oppure style_xxxxx_Mobile.css dove xxxxx rappresenta la funzione che state implementando.
 - **js**: File JavaScript. il nome del file js deve seguire il seguente formato: jsXXXXX.js  dove XXXXX rappresenta il nome della funzione che state implementando.
-- **img**: Immagini.
+- **img**: Immagini di tutto il sito.sta vcartella dovrà contenere la sottocartella **profile** che conterrà le immagini dei profili doi tutti gli utenti, compreso il file default.png che rappresenta l'icona base per un qualsiasi utente che non carica la propria immagine.
 - **api**: Web services per programmazione via AJAX.
 
 ## Considerazioni generali sulle pagine dinamiche in PHP
