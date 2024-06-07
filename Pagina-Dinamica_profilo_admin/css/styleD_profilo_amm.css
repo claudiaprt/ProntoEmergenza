@@ -1,0 +1,43 @@
+/*DESKTOP*/
+
+.slider{
+	width:1028px;
+	height:500px;
+	top:20px;
+	margin-left:20%;
+	position:relative;
+	padding:15px;
+	display: flex;
+	align-content: space-around;
+	align-items: flex-end;
+	flex-wrap: wrap;
+}
+
+.profile{
+	width:14.6% !important;
+	height:160px;
+	justify-content:center;
+	margin:1% !important;
+	left:1%;
+	display:inline-block !important;
+	cursor:pointer;
+}
+
+.nome {
+	position:relative;
+	text-align:center;
+	font-size:15px;
+	margin-top:15px;
+	font-family: "Montserrat", Helvetica;
+	font-weight: var(--sotto-testi-font-weight);
+}
+
+.image {
+	position:relative;
+	left:5%;
+	top:3%;
+	width:120px;
+	height:120px;
+	border-radius:50%;
+	object-fit:cover;
+}

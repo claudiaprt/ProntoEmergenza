@@ -1,0 +1,40 @@
+/*MOBILE*/
+
+.slider{
+	width:60%;
+	top:26px;
+	margin-left:20%;
+	position:relative;
+	padding:3px;
+	display: flex;
+	align-content: space-around;
+	align-items: flex-end;
+	flex-wrap: wrap;
+}
+
+.profile{
+	width:80px;
+	height:80px;
+	justify-content:center;
+	text-align:center;
+	margin:8%;
+	display:inline-block;
+}
+
+.nome {
+	position:relative;
+	text-align:center;
+	font-size:15px;
+	margin:5px;
+	font-family: "Montserrat", Helvetica;
+	font-weight: var(--sotto-testi-font-weight);
+}
+
+.image {
+	position:relative;
+	left:5%;
+	top:3%;
+	width:60px;
+	height:60px;
+	border-radius:50%;
+}
