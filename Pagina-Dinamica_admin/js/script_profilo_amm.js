@@ -1,8 +1,3 @@
-/*funzione per display menu mobile*/
-function showMenu(){
-	document.getElementById('menu-mobile-box').classList.toggle('show-burger'); 
-}
-
 /*funzione per stampa hamburger menu*/
 function stampaMenu(){
 	let menu="";
@@ -15,5 +10,5 @@ function stampaMenu(){
 }
 
 function postData(user) {
-    window.location.replace("./redirect.php?id="+user);
+    window.location.replace("./php/redirect_profilo_utente.php?id="+user);
 }
