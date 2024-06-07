@@ -1,46 +1,5 @@
 /*DESKTOP*/
 
-.Mobile_Header{
-	display:none;
-}
-
-.burger-menu {
-    display:none;
-}
-
-.menu-mobile{
-	display:none;
-}
-
-.header{
-	display:block;
-
-	position:relative;
-	width:1370.64px;
-	height:100px;
-	left:10%;
-	top:5px;
-	flex-direction: row;
-	justify-content: center;
-}
-
-.pulsanti{
-	position:relative;
-	display:inline-block;
-	font-size:20px;
-	text-align:right;
-	left:41%;
-	margin:1%;
-	bottom:26%;
-	font-family: "Montserrat", Helvetica;
-	color: black;
-}
-
-.immagine-logo{
-	width:200px;
-	height:90px;
-}
-
 .slider{
 	width:1028px;
 	height:500px;
@@ -61,14 +20,16 @@
 	margin:1% !important;
 	left:1%;
 	display:inline-block !important;
+	cursor:pointer;
 }
 
 .nome {
 	position:relative;
 	text-align:center;
-	font-size:16px;
-	margin:5px;
+	font-size:15px;
+	margin-top:15px;
 	font-family: "Montserrat", Helvetica;
+	font-weight: var(--sotto-testi-font-weight);
 }
 
 .image {
@@ -78,4 +39,5 @@
 	width:120px;
 	height:120px;
 	border-radius:50%;
+	object-fit:cover;
 }
