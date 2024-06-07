@@ -56,7 +56,7 @@
                 <div class="immagini">
                     <img class="triangolo-arancione" src="img/triangolo-arancione.svg" alt="Triangolo Arancione" />
                     <img class="triangolo-blu" src="img/triangolo-blu.svg" alt="Triangolo Blu" />
-                    <?php echo "<img class='imgProf' src=img/".$utente[0]['immagine']." alt='Foto profilo' />"; ?>
+                    <?php echo "<img class='imgProf' src=../Pagina_Dinamica_Header/img/".$utente[0]['immagine']." alt='Foto profilo' />"; ?>
                 </div>
                 <div class="nome-ruolo">
                     <?php
