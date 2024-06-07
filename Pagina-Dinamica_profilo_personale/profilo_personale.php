@@ -1,9 +1,5 @@
 <?php
     session_start();
-    $_SESSION['idUtente']=1;
-    $_SESSION['tipoUtente']="admin";
-    $_COOKIE['user']=4;
-
         if (!isset($_SESSION['idUtente'])&&!isset($_SESSION['tipoUtente'])) {
             header("Location: login.php");
         } else {
