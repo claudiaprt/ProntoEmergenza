@@ -1,0 +1,178 @@
+/* Mobile styles for the profile page */
+body {
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* .header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.header .titolo-profilo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262b5b;
+  text-align: center;
+  flex: 1;
+}
+
+.header .fa {
+  font-size: 18px;
+  color: #262b5b;
+  cursor: pointer;
+} */
+
+.main-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nome-ruolo .anag {
+  font-size: 22px;
+  font-weight: 600;
+  color: #262b5b;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.nome-ruolo .ruolo {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6f6f6f;
+  text-align: center;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dati-profilo {
+  display: flex;
+  flex-direction: row; /* Change from column to row */
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.dati-profilo .txt {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: var(--blu-testi-bottoni);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-right: 20px; /* Add some space between txt and dati */
+}
+
+.dati-profilo .dati {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: var(--grigio-pulsante);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+} 
+
+p{
+  margin: 20px 0;
+}
+
+.bottone-modifica {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 44px;
+  padding: 10px;
+  background-color: #262b5b;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 28px;
+}
+
+.bottone-modifica a{
+  text-decoration: none;
+  color: white;
+  width: 250px;
+  height: 44px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.freccia-dx{
+  float:left;
+}
+
+.left-content .imgProf{
+  width: 154px;
+  height: 154px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.ruolo{
+  width: 159px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: var(--blackactivestatus);
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.anag{
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: #262b5b;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* Additional styling */
+.header .logo {
+  display: none;
+}
+
+.triangolo-arancione{
+  display: none;
+}
+
+.triangolo-blu{
+  display: none;
+}
+
+.linea-di-mezzo{
+  display: none;
+}
+
+.logo{
+  display: none;
+}
+
+
+#link{
+  display:none;
+}
