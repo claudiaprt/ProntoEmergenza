@@ -108,14 +108,12 @@ function comunicazione($array){
     $arr = $array[0];
     $mg = "";
     if($arr['nomeFileAllegato'] != null)
-        $mg = "<a href='download.php?file=".$arr['nomeFileAllegato']."'><button>Scarica Allegato</button></a>";
+        $mg = "<br><a href='download.php?file=".$arr['nomeFileAllegato']."'><button>Scarica Allegato</button></a><br>";
     echo 
     "<h1>".$arr['titolo']."</h1>
     <br>
     <p>".$arr['testo']."</p>
-    <br>
     ".$mg."
-    <br>
     <br>
     <p>Autore: ".$arr['cognome']." ".$arr['nome']."</p>
     ";
