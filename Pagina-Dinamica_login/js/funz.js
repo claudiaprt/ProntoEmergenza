@@ -11,11 +11,7 @@ function ritornaLog(xhttp) {
 			formLog.textLog.value = '';
 			formLog.pswLog.value = '';
         } else {
-            if (strJson.utente === "admin") {
-                window.location.replace("home_amministratore.php");
-            } else {
-                window.location.replace("home.php");
-            }
+           window.location.replace("home.php");
         }
     } catch (e) {
         console.error("Error parsing JSON response:", e, xhttp.responseText);

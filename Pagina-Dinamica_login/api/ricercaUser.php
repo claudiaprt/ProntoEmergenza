@@ -5,8 +5,8 @@ use lib\DB;
 
 header('Content-Type: application/json');
 
-$responseArray = array(
-    'risultato' => 'false',
+$responseArray = array(         //qui invio false come risultato (quindi un errore) e come tipoErr invio log ossia
+    'risultato' => 'false',		//un errore nei dati inseriti dall'utente
     'tipoErr' => 'log'
 );
 
@@ -34,7 +34,15 @@ try {
 	
 	*/
     if ($result && is_array($result) && count($result) > 0) {
-        session_start();
+        /*$lifetime = 30 * 24 * 60 * 60;
+		session_set_cookie_params($lifetime);
+		ini_set('session.gc_maxlifetime', $lifetime);*/
+		
+		
+		/*ini_set('session.cookie_lifetime', 60 * 60 * 24 * 30);
+		ini_set('session.gc_maxlifetime', 60 * 60 * 24 * 30);
+		ini_set('session.save_path', '../sessions');*/
+		session_start();
         $user = $result[0];
 		$_SESSION['nome']=$user['nome'];
 		$_SESSION['cognome']=$user['cognome'];
