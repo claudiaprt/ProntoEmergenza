@@ -1,3 +1,18 @@
+<?php
+require_once (".\\lib\\globals.php");
+require_once (".\\lib\\db.php");
+require_once (".\\header.php");
+
+use lib\DB;
+session_start();
+   if (!isset($_SESSION['nome'])) {
+      header("Location: login.php");
+   } else {
+    $db = new DB();
+    $nome = $_SESSION['nome'];
+    $sql = "SELECT oraInizio, oraFine, data, nome from (turniutenti tu inner join utenti utenti u on tu.idUtente = u.idUtente) inner join turni118 t on t.idTurno118 = tu.idTurno118) where ";
+    $parameters ;
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,11 +21,14 @@
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styleguide.css" />
     <link rel="stylesheet" href="style_home.css" />
-  </head>
+    <link rel="stylesheet" href="styleDheader.css" />
+    <link rel="stylesheet" href="styleMheader.css" />
+
+  </head> 
 
   <body>
     <div class="home">
-      <div class="header only-desktop">
+      <!-- <div class="header only-desktop">
         <img class="immagine-logo" src="img/logo-ambulanza.png" />
         <div class="cont">
           <div class="nav-links">
@@ -24,13 +42,19 @@
             <img src="img/profilo.png" width="50" height="50" />
           </div>
         </div>
-      </div>
+      </div> -->
+
+      <?php 
+      $_SESSION['immagine_profilo'] = "img/ellipse-22.png";
+      //ancora da mettere l'immagine nella sessione
+      printHeader(); 
+      ?>
 
       <div class="fascia only-desktop">
         <div class="testo">
           <p class="welcome-text">
             Ciao <br />
-            Davide! <br />
+            <?php echo $_SESSION['nome'] ?>, <br />
           </p>
           <p class="welcome-text-2">come possiamo aiutarti?</p>
         </div>
@@ -39,9 +63,7 @@
           <img class="icona-cuore" src="img/icona-cuore.png" />
         </div>
       </div>
-      <div class="immagine only-mobile">
-        <img class="immagine-logo" src="img/logo-ambulanza.png" />
-      </div>
+      
 
       <div class="icone">
         <div class="icona">
@@ -103,3 +125,6 @@
     </div>
   </body>
 </html>
+<?php 
+   }
+?>
