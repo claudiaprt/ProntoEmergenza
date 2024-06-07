@@ -19,7 +19,7 @@ try {
     $db = new DB();
     $user = $_POST["user"];
     $psw = $_POST["psw"];
-    $sql = "SELECT idUtente,nome, cognome, istruttore, status, tipoUtente FROM utenti WHERE username=:user and password=:psw;";
+    $sql = "SELECT idUtente,nome, cognome, istruttore, status, tipoUtente, immagine FROM utenti WHERE username=:user and password=:psw;";
     $parameters = [
         [':user', $user],
         [':psw', $psw]
@@ -50,6 +50,7 @@ try {
 		$_SESSION['istruttore']=$user['istruttore'];
 		$_SESSION['status']=$user['status'];
 		$_SESSION['tipoUtente']=$user['tipoUtente'];
+		$_SESSION['immagine']=$user['immagine'];
         $responseArray['risultato'] = 'true';
         $responseArray['utente'] = ($user['tipoUtente'] == 'admin') ? 'admin' : 'user';
     } else {
