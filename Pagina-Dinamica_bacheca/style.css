@@ -340,6 +340,9 @@
     margin: 50px auto;
     padding: 20px;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .ellipse{
     width: 52px;
@@ -356,6 +359,11 @@
   .piu{
     color: white;
     font-size: 40px;
+  }
+  .search-bar input{
+    height: 5vh;
+    width: 120%;
+    border: none;
   }
 }
 

@@ -7,8 +7,8 @@ if(!isset($_SESSION['idUtente']))
 else{
     if(isset($_POST['titolo']) && isset($_POST['testo']) && isset($_POST['data']) && isset($_POST['tipo']) && isset($_POST['utenti'])){
         if(controllo([$_POST['titolo'],$_POST['testo'],$_POST['data'],$_POST['utenti']])){
-            if(isset($_FILES['allegato'])){
-                $path = "allegati/allegato_".date("Y-m-d").".".file_extension(basename($_FILES["allegato"]["name"]));       //percorso immagine
+            if(!empty($_FILES['allegato'])){
+                $path = "allegati/all_".date("Y-m-d")."_".codice().".".file_extension(basename($_FILES["allegato"]["name"]));       //percorso immagine
                 $ruolo = ricercaRuoli($_POST['utenti']);                //$ruolo contiene gli utenti destinatari della comunicazione
 
                 $insert = insert("INSERT into comunicazioni (dataEmissione,titolo,testo,nomeFileAllegato,dataScadenza,idTipo,idUtente) values(?,?,?,?,?,?,?)",[date("Y-m-d"),$_POST['titolo'],$_POST['testo'],$path,$_POST['data'],$_POST['tipo'],$_SESSION['idUtente']]);
@@ -33,12 +33,12 @@ else{
                     header("Location: bacheca.php");                //ERRORE
                 else
                     header("Location: bacheca.php");
+                
             }
-
         }else
 
             header("Location: bacheca.php");        //ritorna alla bacheca in caso di campi vuoti nel form         
-    }else{      
+    }else{ 
 ?>
 <html>
     <head>

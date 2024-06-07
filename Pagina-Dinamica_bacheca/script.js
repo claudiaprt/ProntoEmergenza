@@ -6,7 +6,6 @@ function read_checkbox(chx){
     xhttp.open("POST", "switch.php");
     xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhttp.send("val="+chx.checked);
-
 }
 
 function caricaBacheca(xhttp){

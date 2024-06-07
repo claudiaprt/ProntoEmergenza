@@ -42,13 +42,11 @@ else{
       </div>
       <div class="container">
         <h2 class="only-desktop">Bacheca</h2>
-        <div class="search-bar only-desktop">
-          <label for="search-bar" class="search-label"><img src="img/frame-29-1.svg" alt="search" class="search-icon"></label>
+        <div class="search-bar">
+          <label for="search-bar" class="search-label only-desktop"><img src="img/frame-29-1.svg" alt="search" class="search-icon"></label>
           <input type="text" name="search-bar" placeholder="cerca..." class="search-input" id="search-bar" onkeyup="searchbar(this)">
         </div>
         <div class="frame">
-            <h3 class="p only-mobile">Nascondi le comunicazioni già lette</h3>  
-                
           <div class="switch-container" title="Mostra/Nascondi Comunicazioni Lette">
           <form method="post" action="">
             <input name="switch" type="checkbox" id="switch" onclick="read_checkbox(this)">

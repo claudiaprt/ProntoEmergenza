@@ -123,4 +123,11 @@ function titolo($array){
     $arr = $array[0];
     echo "<title>".$arr['titolo']."</title>";
 }
+
+function codice(){
+    $code = "";
+    for($i=0;$i<=2;$i++)
+        $code .= chr(rand(65,90));
+    return $code;
+}
 ?>
