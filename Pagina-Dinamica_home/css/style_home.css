@@ -1,0 +1,199 @@
+@media screen and (min-width: 701px) {
+  .only-mobile {
+    display: none;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3vh;
+    margin-right: 3vh;
+    height: 10vh;
+  }
+
+  .immagine-logo {
+    margin-left: 8vh;
+    height: auto;
+    width: 25vh;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 100px;
+  }
+
+  .cont {
+    top: 20vh;
+    display: flex;
+    justify-content: space-between;
+    gap: 10vh;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+
+    font-family: "Montserrat", Helvetica;
+  }
+
+  .fascia {
+    margin-top: 5vh;
+    height: 75vh;
+    background-color: var(--arancio-sfondo);
+
+    display: flex;
+    align-items: center; /* Allinea verticalmente il contenuto al centro */
+  }
+  .welcome-text {
+    color: white;
+    font-size: 8vh;
+    font-family: "Montserrat", Helvetica;
+  }
+  .welcome-text-2 {
+    color: white;
+    font-size: 5vh;
+    font-family: "Montserrat", Helvetica;
+  }
+  .testo {
+    margin-left: 5vh;
+  }
+  .cuore {
+    position: absolute;
+    right: 0;
+  }
+  .icone {
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 30vh;
+  }
+
+  .icone img {
+    width: 47px;
+    height: auto;
+  }
+
+  .ellipse {
+    border-radius: 50%;
+    width: 20vh;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center;
+    border: 10px solid;
+    color: var(--blu-testi-bottoni);
+  }
+
+  p,
+  h1 {
+    color: var(--blu-testi-bottoni);
+    font-size: 4vh;
+  }
+
+  .text-wrapper {
+    color: var(--grigio-pulsante);
+  }
+
+  .i-MIEI-TURNI {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .box-turni {
+    width: 60vh;
+  }
+  hr {
+    border-top: 1px solid black;
+    width: 100%;
+  }
+
+  .turno {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2vh;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .only-desktop {
+    display: none;
+  }
+
+  .immagine-logo {
+    height: auto;
+    width: 35vh;
+  }
+  .immagine {
+    display: flex;
+    justify-content: center;
+  }
+  .icone {
+    margin-top: 10vh;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Due colonne di uguale larghezza */
+    gap: 1vh; /* Spaziatura tra gli elementi della griglia */
+  }
+  .ellipse {
+    border-radius: 20%;
+    width: 20vh;
+    height: 20vh;
+    align-items: center;
+    border: 10px solid;
+    color: var(--blu-testi-bottoni);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  .icona {
+    display: flex;
+    justify-content: center;
+  }
+  .ellipse img {
+    height: 10vh;
+    width: auto;
+  }
+  .i-MIEI-TURNI {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .box-turni {
+    width: 100%;
+  }
+  hr {
+    border-top: 1px solid black;
+    width: 100%;
+  }
+
+  .turno {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2vh;
+  }
+  p,
+  h1 {
+    color: var(--blu-testi-bottoni);
+    font-size: 2vh;
+  }
+
+  .text-wrapper {
+    color: var(--grigio-pulsante);
+  }
+  body {
+    display: flex;
+    justify-content: center;
+  }
+  .home {
+    width: 90%;
+  }
+}
